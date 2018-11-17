@@ -1,0 +1,162 @@
+.fig-wrapper {
+    width: 350px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+}
+
+figure {
+    margin: 0;
+    text-align: left;
+    position: relative;
+}
+
+figure img {
+    max-width: 100%;
+    display: block;
+    position: relative;
+}
+
+figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0px;
+    padding-bottom: 1em;
+    background: rgb(35, 75, 5);
+    width: 330px;
+    color: #deedde;
+    text-align: center;
+}
+
+figcaption h3 {
+    margin: 0;
+    padding: 0;
+    color: #fff;
+}
+
+figcaption h3:before {
+    content: 'I ♥ ';
+}
+
+figcaption a {
+    padding: 3px 10px;
+    border-radius: 5px;
+    background: #056d1a;
+    color: #fff;
+}
+
+.fig-wrapper figure {
+    overflow: hidden;
+}
+
+
+// rotate
+.fig-wrapper figure:hover img  {
+    transform: rotate(120deg);
+}
+
+// translate
+
+// .fig-wrapper figure img {
+//     transition: transform 0.4s;
+// } 
+  
+// .fig-wrapper figure:hover img  {
+//     transform: translateY(-50px);
+// }
+
+
+// .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: translateY(50px);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+
+// .fig-wrapper figure:hover img  {
+//     transform: translateX(-150px) translateY(100px);
+//  }
+ 
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: translateY(-100px) translateX(100px);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+// .fig-wrapper figure:hover img  {
+//     transform: translate(-150px, 100px);
+//  }
+ 
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: translate(100px, -100px);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+
+// scale
+// .fig-wrapper figure:hover img  {
+//     transform: scaleX(-1);
+//  }
+ 
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: scaleY(2);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+
+// skew 
+
+// .fig-wrapper figure:hover img  {
+//     transform: skewX(20deg);
+//  }
+ 
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: skewY(-20deg);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+
+// .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: skew(-20deg, 20deg);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+ 
+// matrix
+
+// .fig-wrapper figure:hover img  {
+//     transform: matrix(1.2,0,0.5,1.2,50,0);
+//  }
+ 
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: matrix(.8,1,1.5,0.2,80,1);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+
+ 
+//  transform-origin
+
+// .fig-wrapper figure:hover img  {
+//     transform-origin: top left;
+//     /* transform-origin: 110% 110%; */
+//     /* transform-origin: 50px 50px; */
+//     transform: rotate(120deg);
+//  }
+ 
+
+// .fig-wrapper figure:hover img  {
+//     transform: translateX(-150px) translateY(100px);
+//  }
+//  .fig-wrapper figure:hover figcaption {
+//     opacity: 1;
+//     transform: translateY(-100px) translateX(100px);
+//     transition: transform 0.4s, opacity 0.1s;
+//  }
+ 
+ 

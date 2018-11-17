@@ -1,0 +1,63 @@
+<!doctype html>
+<!-- comments index.html -->
+<html class="no-js" lang="">
+    <include src="./partials/_head.html"></include>
+    <style>
+        .navg {
+           width: 50%;
+           
+           margin: 0 auto;
+        }
+
+       .navg li{
+           display: inline-block;
+       }
+       .navg li a {
+           text-decoration: none;
+           color: white;
+           background:red;
+           padding: 1em;
+       }
+
+       #hw{
+           width: 50%;
+           height: 100px;
+           margin: 20px auto;
+           color: beige;
+       }
+     
+     </style>
+<body>
+
+    <!-- Add your site or application content here -->
+
+    <!-- Header -->
+    <include src="./partials/_header.html"></include>
+
+    <!-- Main -->
+    <h1>Hello, JavaScrit!</h1>
+
+   
+            <ul class="navg">
+                  <li><a href="#" onclick="changeBg('red');">Tab 1</a></li>
+                  <li><a href="#" onclick="changeBg('green');">Tab 2</a></li>
+                  <li><a href="#" onclick="changeBg('blue');">Tab 3</a></li>
+            </ul>
+            
+              <div id='hw'>
+                  <h1>Hello World!</h1>
+              </div>
+
+              <script>
+                function changeBg(i){
+                    hw.style.backgroundColor = i;
+                    }
+            </script>
+
+
+    <!-- Footer -->
+    <include src="./partials/_footer.html"></include>
+ 
+    <script src="./js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+/* Icon */
+
+.icon {
+    text-decoration: none;
+    position: relative;
+    
+    & > .label {
+        display: none;
+    }
+}
+
+.icon.circle {
+    border: 0;
+    border-radius: 100%;
+    display: inline-block;
+    font-size: 1.25em;
+    height: 2.25em;
+    left: 0;
+    line-height: 2.25em;
+    text-align: center;
+    text-decoration: none;
+    top: 0;
+    width: 2.25em;
+
+    &:hover {
+        top: -0.2em;
+    }
+
+    &.fa-twitter {
+        background: #70aecd;
+        color: #fff;
+
+        &:hover {
+            background: #7fb7d2;
+        }
+    }
+
+    &.fa-facebook {
+        background: #7490c3;
+        color: #fff;
+
+
+        &:hover {
+            background: #829bc9;
+        }
+    }
+
+    &.fa-google-plus {
+        background: #db6b67;
+        color: #fff;
+    
+
+        &:hover {
+            background: #df7b77;
+        }
+    }
+    &.fa-github {
+        background: #dcad8b;
+        color: #fff;
+    
+
+        &:hover {
+            background: #e1b89b;
+        }
+    }
+    &.fa-dribbble {
+        background: #da83ae;
+        color: #fff;
+    
+
+        &:hover {
+            background: #df93b8;
+        }
+    }
+}
+
+.icon.featured {
+    cursor: default;
+    display: block;
+    margin: 0 0 1.5em 0;
+    opacity: 0.35;
+    text-align: center;
+
+    &:before {
+    font-size: 5em;
+    line-height: 1em;
+    }
+}
