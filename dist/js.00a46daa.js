@@ -107,389 +107,228 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 })({"js/index.js":[function(require,module,exports) {
 // import './../sass/styles.scss';
 // import _ from 'lodash';
-// strings
-var srt1 = 'this is my string',
-    srt2 = 'my second string',
-    srt3 = "my name is chris"; // numbers
-
-var num1 = 10,
-    num2 = 500,
-    num3 = 3.14; // booleans (truthy / falsy)
-
-var b1 = true;
-b12 = false; // specials
-
-var sp1 = undefined,
-    sp2 = null,
-    sp3 = NaN; // ======================
-// declaring variables
-
-var myVariable;
-myVariable = 'something';
-console.log(myVariable);
-var thing = 'first';
-var newThing = 'third'; // objects
-
-var user = {
-  name: 'Chris',
-  username: 'chrisoncode'
-}; // arrays 
-
-var users = ['chris', 'nick', 'holly'];
-var luckyNumbers = [1, 43, 54, 132];
-var whatever = ['chris', 1, 'holly'];
-var superUsers = [{
-  name: 'chris'
-}, {
-  name: 'nick'
-}, {
-  name: 'holly'
-}];
-console.groupCollapsed("superUsers");
-console.log(superUsers[2].name);
-var otherThing = {
-  name: 'chris'
-};
-console.log(otherThing.name);
-otherThing.name = 'holly';
-console.log(otherThing.name);
-console.groupEnd(); // JavaScript Operators
-
-var a = 10;
-var b = 3;
-var c = 15;
-var d = '5';
-var e = 'my name';
-var f = 'is chris';
-console.group('Addition');
-console.log(a + b); // 13
-
-console.log(a + d); // 105
-
-console.log(e + ' ' + f);
-console.log(e += ' is the batman');
-console.groupEnd();
-console.group('Multiplication');
-console.log(a * 3); // 30
-
-console.log(a * b); // 30
-
-console.log(b * c); // 45
-
-console.groupEnd();
-a++;
-b--;
---b;
-c += a;
-console.group('Incrementing');
-console.log(a); // 11    
-
-console.log(b); // 1
-
-console.log(c); // 25
-
-console.groupEnd(); // Оператор группировки ( ) контролирует порядок выполнения в выражениях.
-
-a = 1;
-b = 2;
-c = 3;
-console.log(a + b * c); // 7 обычный порядок
-
-console.log(a + b * c); // 7
-// теперь поменяем порядок сложение до умножения
-
-console.log((a + b) * c); // 9
-// что эквивалентно следующему
-
-console.log(a * c + b * c); // 9
-// JavaScript Booleans
-
-var original = 'chris';
-var clone = 'CHRIS';
-console.groupCollapsed('String');
-console.log(original == 'chris'); // true
-
-console.log(original == clone); // false
-
-console.log(original == clone.toLowerCase()); // true
-
-console.groupEnd();
-var num11 = 10;
-var num22 = '10';
-console.groupCollapsed('Numbers');
-console.log(num11 == num22); // true 
-
-console.log(num11 === num22); // false
-
-console.log(num11 != num22); // false
-
-console.log(num11 !== num22); // true
-
-console.groupEnd();
-var what; // undefined
-
-var things = null;
-console.groupCollapsed('Booleans');
-console.log(Boolean(what)); // false
-
-console.log(Boolean(things)); // false
-
-console.log(Boolean(num11)); // true
-
-console.log(Boolean(num22)); // true
-
-console.log(Boolean({})); // true
-
-console.log(Boolean([])); // true
-
-console.groupEnd();
-var firstArr = [1, 2, 3];
-var secondArr = [1, 2, 3];
-var firstObj = {
-  color: 'red'
-};
-var secondObj = {
-  color: 'red'
-};
-console.groupCollapsed('Objects and Arrays');
-console.log(firstArr === secondArr);
-console.log(firstObj === secondObj);
-console.groupEnd();
-console.group('And Or');
-console.log(Boolean('blah') && Boolean('thing')); // true
-
-console.log(Boolean('blah') && Boolean('')); // false
-
-console.log(Boolean('blah') || Boolean('')); // true
-
-console.log(Boolean('') || Boolean('')); // false
-
-console.groupEnd(); // JavaScript If-Else
-
-var theNumber; // var theNumber = prompt("Выбери число ", "");
-
-if (!isNaN(theNumber)) {
-  console.log("квадратный корень из " + theNumber * theNumber);
-} // var theNumber = Number(prompt("Выбери число", ""));
-// if (!isNaN(theNumber)){
-//     alert("квадратный корень из " + theNumber * theNumber);
-// }
-// else{
-//     alert("ты ввёл не число");
-// }
-// var num = Number(prompt("Выбери число", "0"));
-// if (num < 10){
-//     alert("No");
-// }else if (num < 100){
-//     alert("Ok");
-// }else{
-//     alert("Nop");
-// }
-
-/*
-const name     = prompt('What is your name?');
-const username = 'chrisoncode';
-*/
-// if
-// if (name == 'nick' || name == 'chris') {
-//   alert('Hello!');
-// } else if (name == 'holly') {
-//   console.log('this is holly');
-// } else {
-//   console.log('not nick');
-// }
-//   JavaScript while
-
-
-var result = 1;
-var counter = 0; // while loop
-
-while (counter < 10) {
-  result = result * 2;
-  counter = counter + 1;
+function Product(name, price, picture) {
+  this.name = name;
+  this.price = price;
+  this.picture = picture;
 }
 
-console.log(result); // → 1024
-// do while loop
+var myEagle = new Product("Eagle", 999, "Eagle.png");
+var myNissan = new Product("Nissan", 888, "Nissan");
+var myMazda = new Product("Mazda", 777, "Mazda"); // Имена свойств объекта
 
-do {
-  var name = prompt("Who are you?");
-} while (!name);
+var myObj = new Object(),
+    str = "myString",
+    rand = Math.random(),
+    obj = new Object();
+myObj.type = "Dot syntax";
+myObj["date created"] = "String with space";
+myObj[str] = "String value";
+myObj[rand] = "Random Number";
+myObj[obj] = "Object";
+myObj[""] = "Even an empty string"; // console.log(myObj);
 
-console.log(name); // JavaScript For Loop
-// for loop
+myEagle.name = "Dot syntax";
+myEagle["picture"] = "String with space"; // console.log(myEagle);
 
-for (var number = 0; number <= 12; number = number + 2) {
-  console.log(number);
-}
+var myCar = new Object(); // var myCar = {}; // пока пустой
 
-var result = 1;
+myCar.name = "Ford";
+myCar.name = "Mustang";
+myCar.price = 999;
 
-for (var counter = 0; counter < 10; counter = counter + 1) {
-  result = result * 2;
-}
+function showProps(obj, objName) {
+  var result = "";
 
-console.log(result); // → 1024
-// Выход из цикла
-
-for (var current = 20;; current++) {
-  if (current % 7 == 0) break;
-}
-
-console.log(current); // → 21
-
-for (var number = 0; number <= 12; number += 2) {
-  console.log(number);
-} // Для counter += 1 и counter -= 1 есть ещё более короткие записи: 
-// counter++ and counter--.
-// JavaScript Switch
-
-
-switch (prompt("Как погодка?")) {
-  case "дождь":
-    console.log("Не забудь зонт.");
-    break;
-
-  case "снег":
-    console.log("Блин, мы в России!");
-    break;
-
-  case "солнечно":
-    console.log("Оденься полегче.");
-
-  case "облачно":
-    console.log("Иди гуляй.");
-    break;
-
-  default:
-    console.log("Непонятная погода!");
-    break;
-} //   JavaScript Function
-
-
-function showMessage() {
-  alert('Привет всем присутствующим!');
-} // showMessage();
-
-
-function showThisMessage(msg) {
-  alert(msg);
-} // showThisMessage( 'Привет всем присутствующим!');
-
-
-function showMessageHi() {
-  var message = 'Привет!'; // локальная переменная
-
-  alert(message);
-} // showMessageHi(); // 'Привет!'
-
-
-var userName = 'Jhon';
-
-function showMessageUser() {
-  var message = 'Привет ' + userName;
-  alert(message);
-} // showMessageUser(); // Привет Jhon
-
-
-function showMessageFrom(from, text) {
-  if (text === undefined) {
-    text = 'текст не передан';
+  for (var i in obj) {
+    if (obj.hasOwnProperty(i)) {
+      result += objName + "." + i + " = " + obj[i] + "\n";
+    }
   }
 
-  alert(from + ": " + text);
-}
-
-function showTextMessage(from, text) {
-  text = text || 'текст не передан';
-} // Директива return
+  return result;
+} // console.log(showProps(myNissan, "myCar"));
 
 
-function calcD(a, b, c) {
-  return b * b - 4 * a * c;
-}
+function listAllProperties(o) {
+  var objectToInspect;
+  var result = [];
 
-var test = calcD(-4, 2, 1); // alert(test); // 20
-
-function squared(a) {
-  return a * a;
-}
-
-var newSquared = squared(3);
-console.log(newSquared);
-
-function saySomething() {
-  var message = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'goodbye';
-  var whisper = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-
-  if (whisper) {
-    console.log("%c".concat(message), 'font-size:5px');
-  } else {
-    console.log(message);
+  for (objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)) {
+    result = result.concat(Object.getOwnPropertyNames(objectToInspect));
   }
-}
 
-saySomething('hello', true);
-saySomething('my name is chris', true);
-saySomething(); // function squared(a) {
-//   return a * a;
+  return result;
+} // console.log(listAllProperties(myNissan));
+// console.log(document.body.innerHTML);
+// console.log(document.body.innerHTML);
+// console.log(document.body['innerHTML']);
+// document.body.innerHTML += '<b>незакрытый тег'; // незакрытый тег
+// console.log(document.body.innerHTML ); // <b>тест</b> (исправлено)
+// chat.innerHTML += "<div>Hi <img src='images/cat3.jpg'/> !</div>";
+// chat.innerHTML += "Как дела?";
+// var elem = document.getElementById('my');
+// elem.innerHTML = '<h2>Вставленный скрипт не выполнится</h2><script>console.log("Вставленный скрипт не выполнится");</scr' + 'ipt>';
+// Пример чтения outerHTML:
+// var div = document.getElementById('hello');
+// console.log(div.outerHTML); // <div>Привет <b>Мир</b></div>
+// заменяем div.outerHTML на <p>...</p>
+// div.outerHTML = '<h2>Привет Новый Мир!</h2>';
+// ... но содержимое div.outerHTML осталось тем же, несмотря на "перезапись"
+// console.log(div.outerHTML); // <div>Привет, Мир!</div>
+// var page = document.getElementById('data');
+// console.log(page.childNodes.length);
+// for (var i = 0; i < page.childNodes.length; i++) {
+//     console.log(page.childNodes[i].data);
 // }
-// const newSquared = squared(3);
-// console.log(newSquared);
+// var content = document.getElementById('context');
+// console.log(content.textContent);
+// var text = document.getElementById('intext');
+// console.log(text.innerText);
+// var hiddDiv = document.getElementById('hiddenDiv');
+// hiddDiv.hidden = true;
+// console.log(hiddDiv.innerHTML);
 
-var squarEd = function squarEd(a) {
-  return a * a;
+
+var square = function square(number) {
+  return number * number;
 };
 
-var otherSquared = squarEd;
-punch();
+var x = square(4); // x получает значение 16
+// console.log(x);
+// Имя функции может быть присвоено для вызова самой себя внутри самой функции
 
-function punch() {
-  console.log('punch here!');
-}
+var factorial = function fac(n) {
+  return n < 2 ? 1 : n * fac(n - 1);
+}; // console.log(factorial(3));
 
-var squarED = function squarED(a) {
-  return a * a;
-};
 
-var otherSquarED = squarED;
-punch(); // calc
+function Truck(make, model, year) {
+  this.make = make;
+  this.model = model;
+  this.year = year;
 
-var foo, bar;
+  this.engine = function () {
+    console.log("I turn the engine, but the engine doesn't turn");
+  };
+} // var beatUpTruck = new Truck("Eagle", "Talon TSi", 1993);
+// beatUpTruck.engine();
+// console.log('Because it is model: ', beatUpTruck.model, beatUpTruck.make);
+// Код события onload будет выполнен при полной загрузке страницы.
 
-b2.onclick = function () {
-  if (foo === undefined) {
-    res.value = b2.value;
-    foo = parseInt(b2.value);
-  } else {
-    res.value += b2.value;
-    bar = parseInt(b2.value);
-  }
-};
 
-b3.onclick = function () {
-  if (foo === undefined) {
-    res.value = b3.value;
-    foo = parseInt(b3.value);
-  } else {
-    res.value += b3.value;
-    bar = parseInt(b3.value);
-  }
-}; // b3.onclick = function(){
-//     res.value += b3.value;
-//     bar = parseInt(b3.value);
+function messageShow() {
+  console.log('Документ и все ресурсы загружены!');
+  load1.innerHTML = 'Документ и все ресурсы загружены!';
+} // window.onload = function () {
+// messageShow();
+// };
+// Код события onload будет выполнен при загрузке DOM.
+// function ready() {
+//     console.log('Документ загружен!');
+//     domload1.innerHTML = 'Документ загружен!';
 // }
-
-
-plus.onclick = function () {
-  res.value += plus.value;
-};
-
-equal.onclick = function () {
-  res.value = foo + bar;
-  foo = undefined;
-  bar = undefined;
-};
+// document.addEventListener("DOMContentLoaded", ready);
+// window.onbeforeunload = function () {
+//     return "Точно перейти? И куда же ты собрался?";
+// };
+// Добавляет слушателя событий DOMContentLoaded
+// document.addEventListener("DOMContentLoaded", ready);
+// function ready() {
+//   hello.innerHTML = "Я готова!";
+// }
+// function ready() {
+//     console.log("Document is ready!");
+// }
+// Добавляет слушателя событий DOMContentLoaded
+// document.addEventListener("DOMContentLoaded", ready);
+// function ready() {
+//     console.log("Document is ready!");
+//     console.log(content1); // DOM-элемент
+//     console.log(window['content-holder']); // в имени дефис, поэтому через
+// }
+// var elem = document.getElementById('content2');
+// elem.style.color = "blue"; // Напрямую
+// var elstyle1 = elem.style;
+// elstyle1.color = "red"; // Не напрямую
+// var elem3 = document.getElementById('content3');
+// console.log(elem3.className); //"booble example"
+// elem3.className = "class1 class2 class3";
+// console.log(elem3.className); //"class1 class2 class3"
+// var elem4 = document.getElementById('content4');
+// console.log(elem3.classList.length);
+// elem4.classList.add("class1", "class2", "class3");
+// console.log(elem4.classList);
+// elem4.classList.remove("class1");
+// console.log(elem4.classList);
+// elem4.classList.item(1);
+// elem4.classList.toggle("class1");
+// elem4.classList.contains("class1");
+// document.addEventListener("DOMContentLoaded", ready);
+// function ready() {
+//     document.getElementById("cart-trigger").addEventListener('click', function () {
+//         document.getElementById("cart-sidebar").classList.add('show-sidebar');
+//     });
+//     document.querySelector("#cart-sidebar .remove").addEventListener('click', function () {
+//         document.getElementById("cart-sidebar").classList.remove('show-sidebar');
+//     });
+//     var hamburgerToggle = document.querySelector('.fa-bars');
+//     hamburgerToggle.addEventListener('click', function (e) {
+//         e.preventDefault();
+//         document.querySelector('.nav-menu').classList.toggle('active');
+//     });
+// let buyNow = document.querySelector('.buy-now');
+// buyNow.addEventListener('click', function () {
+//     document.querySelector('.product .product-name').style.display = 'none';
+//     document.querySelector('.product .icon').style.display = 'none';
+//     document.querySelector('.product .buy-now').style.display = 'none';
+//     document.querySelector('.product .product-detail').style.display = 'block';
+//     document.querySelector('.product-menu').style.top = '40%';
+// });
+// var buyNow = document.getElementsByClassName('buy-now');
+// for (let i = 0; i < buyNow.length; i++) {
+//     buyNow[i].addEventListener('click', function (e) {
+//         //  console.log(e.target)
+//         e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'none';
+//         e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'none';
+//         e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'none';
+//         e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'block';
+//         e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '40%';
+//     });
+// }
+// let cancel = document.querySelector('.cancel');
+// cancel.addEventListener('click', function () {
+//     document.querySelector('.product .product-name').style.display = 'block';
+//     document.querySelector('.product .icon').style.display = 'block';
+//     document.querySelector('.product .buy-now').style.display = 'block';
+//     document.querySelector('.product .product-detail').style.display = 'none';
+//     document.querySelector('.product-menu').style.top = '80%';
+// });
+// var cancel = document.getElementsByClassName('cancel');
+// for (let i = 0; i < cancel.length; i++) {
+//     cancel[i].addEventListener('click', function (e) {
+//         e.target.parentNode.parentNode.querySelector('.product .product-name').style.display = 'block';
+//         e.target.parentNode.parentNode.querySelector('.product .icon').style.display = 'block';
+//         e.target.parentNode.parentNode.querySelector('.product .buy-now').style.display = 'block';
+//         e.target.parentNode.parentNode.querySelector('.product .product-detail').style.display = 'none';
+//         e.target.parentNode.parentNode.querySelector('.product-menu').style.top = '80%';
+//     });
+// }
+// let addToCart = document.querySelector('.add-to-cart');
+// addToCart.addEventListener('click', function () {
+//     var y = 180;
+//     document.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
+//     document.querySelector('.product-back').classList.add('back-is-visible');
+// });
+//     var addToCart = document.getElementsByClassName('add-to-cart');
+//     for (let i = 0; i < addToCart.length; i++) {
+//         addToCart[i].addEventListener('click', function (e) {
+//             var y = 180;
+//             e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-wrapper').style.transform = 'rotateY(' + y + 'deg)';
+//             e.target.parentNode.parentNode.parentNode.parentNode.querySelector('.product-back').classList.add('back-is-visible');
+//         });
+//     }
+// }
 },{}],"../../../.nvm/versions/node/v11.0.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -517,7 +356,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "37025" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "46571" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

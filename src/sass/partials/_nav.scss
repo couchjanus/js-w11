@@ -1,11 +1,15 @@
+nav > i.fa-bars{
+  display: none;
+}
+
 .nav-menu {
   background-color: #CC6600;
   list-style: none;
   margin: 0;
+  
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around;
-
 }
 
 .nav-item a {
@@ -18,14 +22,23 @@
 .nav-item a:hover,
 .nav-item a:focus {
   background-color: tomato;
-
 }
 
+
 @media (max-width: 767px) {
+  nav {
+    background-color: #CC6600;
+    color: #FFF;
+  }
+
+  nav > i.fa-bars{
+    display: block;
+    padding: 15px 10px;
+  }
+
   .nav-menu {
-    flex-flow: column wrap;
-    justify-content: space-around;
     padding: 0;
+    display: none;
   }
 
   .nav-item a {
@@ -33,6 +46,10 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     text-align: center;
   }
+}
+
+.active {
+  display: block;
 }
 
 @media screen and (max-width: 750px) {

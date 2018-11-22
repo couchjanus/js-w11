@@ -25,12 +25,15 @@ a {
 img {
   max-width: 100%; }
 
+nav > i.fa-bars {
+  display: none; }
+
 .nav-menu {
   background-color: #CC6600;
   list-style: none;
   margin: 0;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
   justify-content: space-around; }
 
 .nav-item a {
@@ -44,14 +47,22 @@ img {
   background-color: tomato; }
 
 @media (max-width: 767px) {
+  nav {
+    background-color: #CC6600;
+    color: #FFF; }
+  nav > i.fa-bars {
+    display: block;
+    padding: 15px 10px; }
   .nav-menu {
-    flex-flow: column wrap;
-    justify-content: space-around;
-    padding: 0; }
+    padding: 0;
+    display: none; }
   .nav-item a {
     border-top: 1px solid rgba(255, 255, 255, 0.4);
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     text-align: center; } }
+
+.active {
+  display: block; }
 
 @media screen and (max-width: 750px) {
   body > h1 {
@@ -83,3 +94,218 @@ footer {
   footer {
     min-height: 50px;
     max-height: 50px; } }
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 5px;
+  grid-auto-flow: dense; }
+  .grid-container article {
+    display: flex;
+    flex: 1 1 240px;
+    justify-content: center;
+    align-items: center;
+    margin: 0 10px; }
+    .grid-container article img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%; }
+
+.cards {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  .cards li {
+    border: 2px solid #490A3D;
+    border-radius: 5px;
+    background-color: #BD1550;
+    color: #fff;
+    flex: 1 1 240px; }
+  .cards h2 {
+    background-color: #490A3D;
+    margin: 0;
+    padding: 10px; }
+  .cards p {
+    padding: 10px; }
+  .cards img {
+    padding: 10px;
+    max-width: 100%; }
+
+.cart {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  padding-top: 50px;
+  overflow-y: auto;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  right: -100%;
+  background: white;
+  transition: right 0.3s; }
+
+.show-sidebar {
+  right: 0;
+  z-index: 20; }
+
+@media only screen and (min-width: 600px) {
+  .cart {
+    width: 350px; } }
+
+.shadow-layer {
+  position: fixed;
+  min-height: 100vh;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  background: rgba(67, 87, 121, 0.6);
+  cursor: pointer;
+  z-index: 15;
+  display: none; }
+
+.is-visible {
+  display: block;
+  animation: cd-fade-in 0.3s; }
+
+.back-is-visible {
+  z-index: 10; }
+
+.product {
+  background-color: #ddd;
+  text-align: center;
+  border-radius: 10px;
+  width: 250px;
+  height: 360px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgba(10, 18, 20, 0.54902) 0px 4px 13px 3px; }
+  .product .product-name {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    font-size: 14px;
+    color: #333;
+    background-color: #ddd; }
+  .product .product-menu {
+    width: 100%;
+    height: 360px;
+    top: 80%;
+    background-color: #CC6600;
+    color: white;
+    position: absolute;
+    transition: all .7s; }
+    .product .product-menu .product-price, .product .product-menu .product-detail, .product .product-menu .buy-now {
+      width: 50%;
+      height: 72px;
+      line-height: 72px;
+      font-size: 18px;
+      float: left; }
+    .product .product-menu .buy-now, .product .product-menu .product-detail {
+      border-left: solid 1px #ddd;
+      cursor: pointer;
+      transition: all .3s; }
+    .product .product-menu .buy-now:hover, .product .product-menu .product-detail:hover {
+      background-color: #E83b24;
+      color: white; }
+    .product .product-menu .product-detail {
+      display: none; }
+    .product .product-menu .howmany {
+      clear: both;
+      width: 100%;
+      height: 72px;
+      padding: 10px;
+      line-height: 25px;
+      border-top: solid 1px #ddd;
+      border-bottom: solid 1px #ddd; }
+    .product .product-menu .cancel {
+      width: 100px;
+      height: 72px;
+      line-height: 72px;
+      font-size: 18px;
+      background-color: #E83b24;
+      color: white;
+      float: left;
+      cursor: pointer;
+      transition: all .3s; }
+    .product .product-menu .cancel:hover {
+      background-color: #E83b24;
+      color: white; }
+    .product .product-menu .add-to-cart {
+      width: 150px;
+      height: 72px;
+      line-height: 72px;
+      font-size: 18px;
+      background-color: red;
+      border-left: solid 1px #E83b24;
+      float: left;
+      cursor: pointer;
+      transition: all .3s; }
+    .product .product-menu .add-to-cart:hover {
+      background-color: #E83b24;
+      color: white; }
+  .product .icon {
+    display: block; }
+    .product .icon .icon-background {
+      width: 80px;
+      height: 80px;
+      line-height: 80px;
+      background-color: #CC6600;
+      position: absolute;
+      top: 0px;
+      left: -40px;
+      transform: skewX(-45deg); }
+    .product .icon .shopping-cart {
+      color: white;
+      display: block;
+      position: absolute;
+      top: 8px;
+      left: 8px; }
+  .product .product-picture {
+    overflow: hidden;
+    top: 20%; }
+    .product .product-picture img {
+      max-width: 100%;
+      min-width: 250px;
+      margin-top: 10px; }
+
+.product-wrapper {
+  -webkit-transition: all 0.7s ease;
+  display: inline-block;
+  float: left;
+  margin: 2em 1em;
+  height: 360px;
+  transition: all 0.7s ease;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d; }
+
+.product-back {
+  width: 250px;
+  height: 360px;
+  border-radius: 10px;
+  background-color: #ddd;
+  color: #EE3B24;
+  text-align: center;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: rgba(10, 18, 20, 0.54902) 0px 4px 13px 3px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  z-index: -1;
+  top: -360px;
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg); }
+  .product-back .check {
+    color: #E83b24;
+    font-size: 32px; }
+    .product-back .check i, .product-back .check p {
+      position: absolute;
+      text-align: center; }
+    .product-back .check i {
+      top: 40%;
+      left: 25%; }
+    .product-back .check p {
+      top: 10%;
+      left: 25%; }
+
+.back-is-visible {
+  z-index: 10; }
