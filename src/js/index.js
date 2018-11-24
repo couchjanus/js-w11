@@ -1,192 +1,202 @@
 // import './../sass/styles.scss';
-// import _ from 'lodash';
 
-function Product(name, price, picture) {
-    this.name = name;
-    this.price = price;
-    this.picture = picture;
+import $ from "jquery";
+
+// export for others scripts to use
+
+window.$ = window.jQuery = $;
+
+$(document).ready(function(){
+    console.log("Hello jQuery!");
+    console.log(jQuery('h1'));
+
+    // JQuery Получить все элементы div
+    // console.log($('div'));
+
+    // console.log($(".buy-now"));
+
+    // Получить DOM-элемент с идентификатором cart-sidebar
+
+    // console.log($('#cart-sidebar'));
+
+    // JQuery Получить все элементы span внутри div
+    // console.log($($('div span')));
+      
+    // JQuery Получить все элементы span внутри div
+    // console.log($($($('div').find('span'))));
+           
+    // JQuery Получить все элементы span внутри div
+    // console.log($($('div > span')));
+
+    // JQuery Получить все div с классом icon
+
+    // console.log($('div.icon'));
+
+    // console.log($('div, span')); // все div и span
+
+    // console.log($('span + img')); // все img после span
+
+
+    // console.log($('.github').prev()); // элемент перед .github
+
+    // console.log($('.github').next()); // элемент после .github
+
+
+
+//   $(".buy-now").click(function(){
+//     $("div").addClass("important");
+//     console.log("Class added to div");
+//   });
+
+});
+
+function toggle_panel(panel, background_layer) {
+         
+    if (panel.hasClass('show-sidebar')) {
+         panel.removeClass('show-sidebar');
+         background_layer.removeClass('is-visible');
+     } else {
+         panel.addClass('show-sidebar');
+         background_layer.addClass('is-visible');
+     }
 }
 
-var myEagle = new Product("Eagle", 999, "Eagle.png");
-var myNissan = new Product("Nissan", 888, "Nissan");
-var myMazda = new Product("Mazda", 777, "Mazda");
 
-// Имена свойств объекта
+$(function() {
+    //DOM-дерево готово
+    // $("p.load").text(
+    // "Структура документа загружена и полностью сформирована!");
+    // $('p').css('border', '3px solid blue');
 
-var myObj = new Object(),
-    str = "myString",
-    rand = Math.random(),
-    obj = new Object();
+    // Например, определим ширину и высоту элемента p:
+    // получим значения сразу нескольких CSS свойств
+    // var cssProperties = $('p').css(['width','height']);
+    // console.log(cssProperties);
 
-myObj.type = "Dot syntax";
-myObj["date created"] = "String with space";
-myObj[str] = "String value";
-myObj[rand] = "Random Number";
-myObj[obj] = "Object";
-myObj[""] = "Even an empty string";
+    // Например, установить всем элементам a цвет = red:
+    // $("a").css("color", "red");
 
-// console.log(myObj);
+    // var newCSS = {
+    //     'color':'green',
+    //     'font-size':'16px'
+    // };
+    
+    // $('p').css(newCSS);
+    // Например, увеличить отступ сверху, слева и справа 
+    // для элементов p на 10px:
+    // $('p').css({"padding-left": "+=10","padding-right":"+=10", "padding-top": "+=10"});
 
-myEagle.name = "Dot syntax";
-myEagle["picture"] = "String with space";
+    // установим всем элементам span, у которых цвет шрифта не равен green, CSS свойство color, равное red.
 
-// console.log(myEagle);
+    // $('span').css('color', function(index, value) {
+    //     if (value!='rgb(0, 255, 0)') {
+    //         return 'red';
+    //     }
+    // });
 
-var myCar = new Object(); // var myCar = {}; // пока пустой
-myCar.name = "Ford";
-myCar.name = "Mustang";
-myCar.price = 999;
+    // $('span').css('display', function(index, value) {
+    //     if (value!='block') {
+    //         return 'block';
+    //     }
 
+    // });
 
-function showProps(obj, objName) {
-    var result = "";
-    for (var i in obj) {
-        if (obj.hasOwnProperty(i)) {
-            result += objName + "." + i + " = " + obj[i] + "\n";
-        }
-    }
-    return result;
-}
-// console.log(showProps(myNissan, "myCar"));
+    // const cart_trigger = $('#cart-trigger');
+    // console.log(cart_trigger, "It's Cart Trogger");
+    // Object [ a#cart-trigger ] It's Cart Trogger
 
-function listAllProperties(o) {
-    var objectToInspect;
-    var result = [];
-    for (objectToInspect = o; objectToInspect !== null; objectToInspect = Object.getPrototypeOf(objectToInspect)) {
-        result = result.concat(Object.getOwnPropertyNames(objectToInspect));
-    }
-    return result;
-}
+    // $('#cart-trigger').click(function(){
+    //     console.log("jQuery Click : It's Cart Trigger");
+    // });
 
-// console.log(listAllProperties(myNissan));
+    // $('#cart-trigger').on('click', function(){
+    //     console.log("jQuery Event on: It's Cart Trigger");
+    // });
 
-// console.log(document.body.innerHTML);
-
-// console.log(document.body.innerHTML);
-// console.log(document.body['innerHTML']);
-
-// document.body.innerHTML += '<b>незакрытый тег'; // незакрытый тег
-// console.log(document.body.innerHTML ); // <b>тест</b> (исправлено)
-
-// chat.innerHTML += "<div>Hi <img src='images/cat3.jpg'/> !</div>";
-// chat.innerHTML += "Как дела?";
-
-// var elem = document.getElementById('my');
-// elem.innerHTML = '<h2>Вставленный скрипт не выполнится</h2><script>console.log("Вставленный скрипт не выполнится");</scr' + 'ipt>';
-
-// Пример чтения outerHTML:
-// var div = document.getElementById('hello');
-// console.log(div.outerHTML); // <div>Привет <b>Мир</b></div>
-
-// заменяем div.outerHTML на <p>...</p>
-// div.outerHTML = '<h2>Привет Новый Мир!</h2>';
-// ... но содержимое div.outerHTML осталось тем же, несмотря на "перезапись"
-// console.log(div.outerHTML); // <div>Привет, Мир!</div>
-// var page = document.getElementById('data');
-// console.log(page.childNodes.length);
-// for (var i = 0; i < page.childNodes.length; i++) {
-//     console.log(page.childNodes[i].data);
-// }
-// var content = document.getElementById('context');
-
-// console.log(content.textContent);
-
-// var text = document.getElementById('intext');
-
-// console.log(text.innerText);
-// var hiddDiv = document.getElementById('hiddenDiv');
-// hiddDiv.hidden = true;
-// console.log(hiddDiv.innerHTML);
-var square = function (number) {
-    return number * number;
-};
-var x = square(4); // x получает значение 16
-// console.log(x);
-
-// Имя функции может быть присвоено для вызова самой себя внутри самой функции
-
-var factorial = function fac(n) {
-    return n < 2 ? 1 : n * fac(n - 1);
-};
-// console.log(factorial(3));
+    // $("#cart-trigger").on('click', function () {
+    //     $("#cart-sidebar").addClass('show-sidebar');
+    // });
+   
+    // $("#cart-sidebar .remove").on('click', function () {
+    //     $("#cart-sidebar").removeClass('show-sidebar');
+    // });
 
 
-function Truck(make, model, year) {
-    this.make = make;
-    this.model = model;
-    this.year = year;
-    this.engine = function () {
-        console.log("I turn the engine, but the engine doesn't turn");
-    }
-}
+    // $("#cart-trigger").on('click', function () {
+    //     toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
+    // });
+   
+    // $("#cart-sidebar .remove").on('click', function () {
+    //     toggle_panel($('#cart-sidebar'), $('#shadow-layer'));
+    // });
 
-// var beatUpTruck = new Truck("Eagle", "Talon TSi", 1993);
-// beatUpTruck.engine();
-// console.log('Because it is model: ', beatUpTruck.model, beatUpTruck.make);
-// Код события onload будет выполнен при полной загрузке страницы.
+    // var hamburgerToggle = $('.fa-bars');
 
-function messageShow() {
-    console.log('Документ и все ресурсы загружены!');
-    load1.innerHTML = 'Документ и все ресурсы загружены!';
+    // hamburgerToggle.on('click', function (e) {
+    //     e.preventDefault();
 
-}
+    //     $('.nav-menu').toggleClass('active');
+    // });
 
-// window.onload = function () {
-// messageShow();
-// };
-// Код события onload будет выполнен при загрузке DOM.
+    // let buyNow = $('.buy-now');
 
-// function ready() {
-//     console.log('Документ загружен!');
-//     domload1.innerHTML = 'Документ загружен!';
+    // buyNow.on('click', function () {
+    //     $('.product .product-name').css('display','none');
+    //     $('.product .icon').css('display','none');
+    //     $('.product .buy-now').css('display','none');
+    //     $('.product .product-detail').css('display','block');
+    //     $('.product-menu').css('top','40%');
+    // });
 
-// }
-// document.addEventListener("DOMContentLoaded", ready);
-// window.onbeforeunload = function () {
+    // $(".buy-now").each(function(index, element){
+    //     $(element).on('click', function (e) {
+    //         $(e.target).parents('.product').find('.product-name')
+    //         .css('display', 'none');
+    //         $(e.target).parents('.product').find('.icon').css('display', 'none');
+    //         $(e.target).parents('.product').find('.buy-now').css('display','none');
+    //         $(e.target).parents('.product').find(' .product-detail').css('display', 'block');
+    //         $(e.target).parents('.product-menu').css('top', '40%');
+    //     });
+    // });
 
-//     return "Точно перейти? И куда же ты собрался?";
+    // let cancel = $('.cancel');
+    // cancel.on('click', function () {
+    //     $('.product .product-name').css('display','block');
+    //     $('.product .icon').css('display','block');
+    //     $('.product .buy-now').css('display','block');
+    //     $('.product .product-detail').css('display','none');
+    //     $('.product-menu').css('top','80%');
+    // });
 
-// };
-// Добавляет слушателя событий DOMContentLoaded
-// document.addEventListener("DOMContentLoaded", ready);
+    // $(".cancel").each(function(index, element){
+    //     $(element).on('click', function (e) {
+    //         $(e.target).parents('.product').find('.product-name')
+    //         .css('display', 'block');
+    //         $(e.target).parents('.product').find('.icon').css('display', 'block');
+    //         $(e.target).parents('.product').find('.buy-now').css('display','block');
+    //         $(e.target).parents('.product').find(' .product-detail').css('display', 'none');
+    //         $(e.target).parents('.product-menu').css('top', '80%');
+    //     });
+    // });
 
-// function ready() {
-//   hello.innerHTML = "Я готова!";
-// }
 
-// function ready() {
-//     console.log("Document is ready!");
-// }
-// Добавляет слушателя событий DOMContentLoaded
-// document.addEventListener("DOMContentLoaded", ready);
+    // let addToCart = $('.add-to-cart');
+    // addToCart.on('click', function () {
+    //     var y = 180;
+    //     $('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
+    //     $('.product-back').addClass('back-is-visible');
+    // });
 
-// function ready() {
-//     console.log("Document is ready!");
-//     console.log(content1); // DOM-элемент
-//     console.log(window['content-holder']); // в имени дефис, поэтому через
-// }
-// var elem = document.getElementById('content2');
-// elem.style.color = "blue"; // Напрямую
+    // $(".add-to-cart").each(function(index, element){
+    //     $(element).on('click', function (e) {
+    //         var y = 180;   
+    //         $(e.target).parents('.product-wrapper')
+    //         .css('transform', 'rotateY(' + y + 'deg)');
+    //         $(e.target).parents('.product-wrapper').find('.product-back').addClass('back-is-visible');
+    //     });
+    // });
 
-// var elstyle1 = elem.style;
-// elstyle1.color = "red"; // Не напрямую
-// var elem3 = document.getElementById('content3');
-// console.log(elem3.className); //"booble example"
-// elem3.className = "class1 class2 class3";
-// console.log(elem3.className); //"class1 class2 class3"
-// var elem4 = document.getElementById('content4');
-// console.log(elem3.classList.length);
-
-// elem4.classList.add("class1", "class2", "class3");
-// console.log(elem4.classList);
-
-// elem4.classList.remove("class1");
-// console.log(elem4.classList);
-
-// elem4.classList.item(1);
-
-// elem4.classList.toggle("class1");
-// elem4.classList.contains("class1");
+});
 
 
 // document.addEventListener("DOMContentLoaded", ready);
