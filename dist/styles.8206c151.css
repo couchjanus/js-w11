@@ -309,3 +309,18 @@ footer {
 
 .back-is-visible {
   z-index: 10; }
+
+.minus, .plus, .quantity {
+  background: #CC6600;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 50%; }
+
+.minus:hover, .plus:hover {
+  background: #EE3B24;
+  color: #fff; }
+
+.quantity {
+  text-align: center;
+  font-weight: 700;
+  border-radius: 10px; }
