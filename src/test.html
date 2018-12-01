@@ -3,6 +3,57 @@
 <html class="no-js" lang="">
 <include src="./partials/_head.html"></include>
 
+<style>
+
+    /* Content */
+
+section {
+  margin-top: 2em;
+}
+
+/* Wrapper */
+
+.wrapper {
+  margin-bottom: 5em;
+  padding: 5em;
+}
+
+
+/* Containers */
+
+.container {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 120rem;
+  width: 90%;
+  overflow: hidden;
+}
+
+.page{
+  height: 100vh;
+}
+
+h2 {
+    font-size: 2rem;
+    padding-top: 3em;
+  }
+    .red_border{
+       color: aquamarine;
+       background-color: black;
+       border: crimson solid 2px;
+   }
+   .show1{
+       display: none;
+       background-color: aquamarine;
+   }
+   .hide1 {
+       display: block;
+       background-color: aquamarine;
+   }
+
+</style>
+
 <body>
 
     <!-- Add your site or application content here -->
@@ -11,17 +62,100 @@
     <include src="./partials/_header.html"></include>
 
     <!-- Main -->
-    <h1>jQuery</h1>
 
-    <p class="load"></p>
+    <section class="wrapper container special">
+    
+        <h1>Hello World!</h1>
+    
 
-    <span>Например, установим всем элементам span, у которых цвет шрифта не равен green, CSS свойство color, равное red.</span>
+        <article class="page">
+            <h2 id="id1">show()</h2>
+            <div id="nod1">
+                Мгновенно показывает выбранные элементы, установив их css-свойство display в none, не изменяя при этом их прозрачность и размеры.
+            </div>
+            <button id="show1">show</button>
+            <div class="show1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+  
+        </article>    
+        <article class="page">
+            <h2 id="id2">hide()</h2>
+            <p>Мгновенно скрывает выбранные элементы, установив их css-свойство display в none, не изменяя при этом их прозрачность и размеры.</p>
+            <button id="hide1">hide</button>
+            <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+        </article>    
+    
+        <article class="page">
+            <h2 id="id3">fadeIn</h2>
 
-    <form onclick="alert('form')">FORM
-        <div onclick="alert('div')">DIV
-          <p onclick="alert('p')">P</p>
-        </div>
-    </form>
+            <p>
+                .fadeIn() -  показывает элементы на странице за счет плавного изменения прозрачности.
+            </p>
+
+            <button id="fi1">fadeIn</button>
+            <div class="show1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+            
+                    
+        </article> 
+        <article class="page">
+                <h2 id="id4">fadeOut</h2>
+                <p>.fadeOut() -  Скрывает элементы на странице за счет плавного изменения прозрачности.</p>
+                <button id="fi2">fadeOut</button>
+                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+
+        </article>
+        <article class="page">
+                <h2 id="id5">fadeTo</h2>
+                <span>.fadeTo() -  Плавно изменяет прозрачность элементов.
+                </span>
+
+                <button id="fto">fadeOut</button>
+                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+
+        </article>  
+
+        <article class="page">
+                <h2 id="id6">fadeToggle</h2>
+                <p>
+                    .fadeToggle() - Поочередно скрывает/показывает элементы на странице, как это делают .fadeIn() и .fadeOut().
+                </p>
+                <button id="ftog">fadeOut</button>
+                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+        </article>  
+        <article class="page">
+                <h2 id="id7">slideUp</h2>
+                <p>.slideUp()сворачивает элементы на странице (за счет плавного изменения высоты элементов).
+                </p>
+                <button id="su">slideUp</button>
+                <div class="hide1">
+                <img src="/images/cat3.jpg">
+                </div>
+        </article>  
+        <article class="page">
+                <h2 id="id8">slideDown</h2>
+                <p>.slideDown() - Разворачивает элементы на странице (за счет плавного изменения высоты элементов).
+                </p>
+                <button id="sd">slideDown</button>
+                <div class="show1">
+                <img src="/images/cat3.jpg">
+                </div>
+        </article>  
+        <article class="page">
+                <h2 id="id9">slideToggle</h2>
+                <p>
+                    .slideToggle() -  Поочередно разворачивает/сворачивает элементы на странице, как это делают .slideUp() и .slideDown().
+                    
+                </p>
+                <button id="st">slideToggle</button>
+                <div class="st">
+                 <img src="/images/cat3.jpg">
+                </div>
+        </article>  
+
+        
+
+        
+       
+    </section> <!-- end content-wrap -->
       
 
     <!-- Footer -->
