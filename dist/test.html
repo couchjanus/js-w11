@@ -21,50 +21,63 @@
 
 <style>/* Content */
 
-section {
-  margin-top: 2em;
-}
+    section {
+        margin-top: 2em;
+    }
 
-/* Wrapper */
+    /* Wrapper */
 
-.wrapper {
-  margin-bottom: 5em;
-  padding: 5em;
-}
+    .wrapper {
+        margin-bottom: 5em;
+        padding: 5em;
+    }
 
 
-/* Containers */
+    /* Containers */
 
-.container {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 120rem;
-  width: 90%;
-  overflow: hidden;
-}
+    .container {
+        max-width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 120rem;
+        width: 90%;
+        overflow: hidden;
+    }
 
-.page{
-  height: 100vh;
-}
+    .page {
+        height: 100vh;
+    }
 
-h2 {
-    font-size: 2rem;
-    padding-top: 3em;
-  }
-    .red_border{
-       color: aquamarine;
-       background-color: black;
-       border: crimson solid 2px;
-   }
-   .show1{
-       display: none;
-       background-color: aquamarine;
-   }
-   .hide1 {
-       display: block;
-       background-color: aquamarine;
-   }</style>
+    h2 {
+        font-size: 2rem;
+        padding-top: 3em;
+    }
+
+    .red_border {
+        color: aquamarine;
+        background-color: black;
+        border: crimson solid 2px;
+    }
+
+    .show1 {
+        display: none;
+        background-color: aquamarine;
+    }
+
+    .hide1 {
+        display: block;
+        background-color: aquamarine;
+    }
+
+    .console {
+        color: aquamarine;
+        background-color: black;
+        border: crimson solid 2px;
+        width: 80%;
+        height: auto;
+        margin: 1.5rem auto;
+        padding: 1rem;
+    }</style>
 
 <body>
 
@@ -77,7 +90,7 @@ h2 {
         <ul class="nav-menu">
             <li class="nav-item"><a href="/index.html">Home</a></li>
             <li class="nav-item"><a href="#">About</a></li>
-            <li class="nav-item"><a href="/test.html">jQuery</a></li>
+            <li class="nav-item"><a href="/test.html">localstorage</a></li>
             <li class="nav-item"><a href="#">Blog</a></li>
             <li class="nav-item"><a href="#">Contact</a></li>
             <li class="nav-item"><a href="#" id="cart-trigger"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a></li>
@@ -86,101 +99,119 @@ h2 {
 </header>
 
     <!-- Main -->
-
     <section class="wrapper container special">
-    
+
         <h1>Hello World!</h1>
-    
+        <article class="page">
+            <h2 id="id1">localStorage</h2>
+            <div id="nod1">
+                localStorage - это объект класса Storage, доступный как свойство глобального объекта браузера (window).
+            </div>
+            <button id="showLS">show localStorage</button>
+            <div class="console"></div>
+        </article>
 
         <article class="page">
-            <h2 id="id1">show()</h2>
-            <div id="nod1">
-                Мгновенно показывает выбранные элементы, установив их css-свойство display в none, не изменяя при этом их прозрачность и размеры.
-            </div>
-            <button id="show1">show</button>
-            <div class="show1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
-  
-        </article>    
+            <h2 id="id2">try..catch</h2>
+            <p>Конструкция try..catch состоит из двух основных блоков: try, и затем catch:</p>
+            <ul>
+                <li>Выполняется код внутри блока try.</li>
+                <li>Если в нём ошибок нет, то блок catch(err) игнорируется, то есть выполнение доходит до конца try и
+                    потом прыгает через catch.</li>
+                <li>Если в нём возникнет ошибка, то выполнение try на ней прерывается, и управление прыгает в начало
+                    блока catch(err).</li>
+                <li>При этом переменная err будет содержать объект ошибки с подробной информацией о произошедшем.</li>
+            </ul>
+            <button id="tryThis">try This</button>
+            <div class="console"></div>
+        </article>
+
         <article class="page">
-            <h2 id="id2">hide()</h2>
-            <p>Мгновенно скрывает выбранные элементы, установив их css-свойство display в none, не изменяя при этом их прозрачность и размеры.</p>
-            <button id="hide1">hide</button>
-            <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
-        </article>    
-    
-        <article class="page">
-            <h2 id="id3">fadeIn</h2>
+            <h2 id="id3">catch</h2>
 
             <p>
-                .fadeIn() -  показывает элементы на странице за счет плавного изменения прозрачности.
+                .fadeIn() - показывает элементы на странице за счет плавного изменения прозрачности.
             </p>
 
-            <button id="fi1">fadeIn</button>
-            <div class="show1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
-            
-                    
-        </article> 
-        <article class="page">
-                <h2 id="id4">fadeOut</h2>
-                <p>.fadeOut() -  Скрывает элементы на странице за счет плавного изменения прозрачности.</p>
-                <button id="fi2">fadeOut</button>
-                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+            <button id="catchThis">Catch This</button>
+            <div class="console"></div>
+
 
         </article>
         <article class="page">
-                <h2 id="id5">fadeTo</h2>
-                <span>.fadeTo() -  Плавно изменяет прозрачность элементов.
-                </span>
+            <h2 id="id4">Секция finally</h2>
+            <p>Секцию finally используют, чтобы завершить начатые операции при любом варианте развития событий.</p>
 
-                <button id="fto">fadeOut</button>
-                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
+            <button id="finallyThis">Finally This</button>
+            <div class="console"></div>
 
-        </article>  
+        </article>
+        <article class="page">
+            <h2 id="id5">QUOTA_EXCEEDED_ERR</h2>
+            <span>Браузеры выделяют 5мб под localStorage. И если вы его превысите — получите исключение
+                QUOTA_EXCEEDED_ERR. С его помощью можно проверять есть ли в вашем хранилище еще место.
+            </span>
+
+            <button id="quotaLS">QUOTA</button>
+            <div class="console"></div>
+
+        </article>
 
         <article class="page">
-                <h2 id="id6">fadeToggle</h2>
-                <p>
-                    .fadeToggle() - Поочередно скрывает/показывает элементы на странице, как это делают .fadeIn() и .fadeOut().
-                </p>
-                <button id="ftog">fadeOut</button>
-                <div class="hide1">Библиотека jQuery предоставляет несколько техник для добавления анимации к DOM-элементам на странице. Ниже описаны простые, стандартные методы анимации, которые часто используются, а также методы способные обрабатывать сложные пользовательские эффекты.</div>
-        </article>  
-        <article class="page">
-                <h2 id="id7">slideUp</h2>
-                <p>.slideUp()сворачивает элементы на странице (за счет плавного изменения высоты элементов).
-                </p>
-                <button id="su">slideUp</button>
-                <div class="hide1">
-                <img src="/cat3.06d0e916.jpg">
-                </div>
-        </article>  
-        <article class="page">
-                <h2 id="id8">slideDown</h2>
-                <p>.slideDown() - Разворачивает элементы на странице (за счет плавного изменения высоты элементов).
-                </p>
-                <button id="sd">slideDown</button>
-                <div class="show1">
-                <img src="/cat3.06d0e916.jpg">
-                </div>
-        </article>  
-        <article class="page">
-                <h2 id="id9">slideToggle</h2>
-                <p>
-                    .slideToggle() -  Поочередно разворачивает/сворачивает элементы на странице, как это делают .slideUp() и .slideDown().
-                    
-                </p>
-                <button id="st">slideToggle</button>
-                <div class="st">
-                 <img src="/cat3.06d0e916.jpg">
-                </div>
-        </article>  
+            <h2 id="id6">Метод setItem</h2>
+            <p>
+                Метод setItem(key,value) предназначен для добавления в хранилище элемента с указанным ключом (key) и
+                значением (value).
+                Если в хранилище уже есть элемент с указанным ключом (key), то в этом случае произойдет изменения его
+                значения (value).
 
-        
+            </p>
+            <button id="setItem">setItem</button>
+            <div class="console"></div>
+        </article>
+        <article class="page">
+            <h2 id="id7">Метод getItem</h2>
+            <p>.slideUp()сворачивает элементы на странице (за счет плавного изменения высоты элементов).
+            </p>
+            <button id="getItem">getItem</button>
+            <div class="console"></div>
+        </article>
+        <article class="page">
+            <h2 id="id8">saveCart</h2>
 
-        
-       
+            <button id="saveCart">saveCart</button>
+            <div class="console"></div>
+        </article>
+        <article class="page">
+            <h2 id="id9">Save Cart Into LS</h2>
+
+            <button id="saveCartInto">Save Cart</button>
+            <div class="console"></div>
+        </article>
+
+        <article class="page">
+            <h2 id="id10">Get Cart Data</h2>
+
+            <button id="getCartData">Get Cart Data</button>
+            <div class="console"></div>
+        </article>
+        <article class="page">
+            <h2 id="id11">Error Cart Data</h2>
+
+            <button id="errorCartData">Error Cart Data</button>
+            <div class="console"></div>
+        </article>
+        <article class="page">
+            <h2 id="id12">Show Cart Data</h2>
+
+            <button id="showCart">Show Cart Data</button>
+            <div class="console"></div>
+        </article>
+
+
+
     </section> <!-- end content-wrap -->
-      
+
 
     <!-- Footer -->
     <footer class="footer" id="footer">
@@ -197,7 +228,7 @@ h2 {
 
 <div id="shadow-layer" class="shadow-layer"></div>
 
-    <script src="/js.00a46daa.js"></script>
+    <script src="/test.bfc5c598.js"></script>
 </body>
 
 </html>

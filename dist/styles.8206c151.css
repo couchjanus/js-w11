@@ -324,3 +324,132 @@ footer {
   text-align: center;
   font-weight: 700;
   border-radius: 10px; }
+
+.cart > * {
+  padding: 0 1em; }
+
+.cart {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 260px;
+  padding-top: 50px;
+  overflow-y: auto;
+  -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+  right: -100%;
+  background: #fff;
+  -webkit-transition: right .3s;
+  transition: right .3s; }
+
+.cart h2 {
+  font-size: 14px;
+  font-size: .875rem;
+  font-weight: 700;
+  margin: 1.5em 0; }
+
+.cart .cart-items {
+  padding: 0; }
+
+.cart .cart-items li {
+  position: relative;
+  padding: 1em;
+  list-style: none;
+  border-top: 1px solid #e0e6ef; }
+
+.cart .cart-items li:last-child {
+  border-bottom: 1px solid #e0e6ef; }
+
+.cart .price, .cart .qty {
+  color: #a5aebc; }
+
+.cart .price {
+  margin-top: .4em; }
+
+.cart .item-remove {
+  position: absolute;
+  right: 1em;
+  top: 50%;
+  bottom: auto;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; }
+
+.cart .cart-total {
+  padding-top: 1em;
+  padding-bottom: 1em; }
+
+.cart .cart-total::after {
+  display: table; }
+
+.cart .checkout-button {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #222;
+  color: #FFF;
+  font-weight: 700;
+  text-align: center; }
+
+.cart .checkout-button:hover {
+  background: red;
+  color: #fff; }
+
+.cart .go-to-cart {
+  text-align: center;
+  margin: 1em 0; }
+
+.cart .go-to-cart a {
+  text-decoration: underline; }
+
+.cart span.qty {
+  width: 75px;
+  height: 75px;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-right: 1px solid #333;
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 2.5em;
+  line-height: 75px;
+  text-align: center;
+  color: #fff;
+  background-size: cover;
+  background-repeat: no-repeat; }
+
+.cart .item-name, .cart .item-prices {
+  font-size: 1.5em;
+  display: inline-block;
+  color: #333; }
+
+.cart .item-name {
+  float: right; }
+
+.cart .item-prices {
+  float: left; }
+
+.cart .clear-cart {
+  display: block;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  background: #EE3B24;
+  color: #FFF;
+  text-align: center; }
+
+.cart .clear-cart:hover {
+  background: red;
+  color: #fff;
+  font-weight: 900; }
+
+.show-sidebar {
+  right: 0;
+  z-index: 20; }
+
+@media only screen and (min-width: 600px) {
+  .cart {
+    width: 350px; } }
