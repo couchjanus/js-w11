@@ -1,429 +1,166 @@
+import '../scss/main.scss';
 import $ from "jquery";
+import popper from "popper.js";
+import bootstrap from "bootstrap";
 
 // export for others scripts to use
 window.$ = window.jQuery = $;
 
 $(function () {
 
-    var message = '';
-    // Проверить, поддерживает ли браузер API sessionStorage и localStorage
-    $('#showLS').on('click', () => {
-        if (window.sessionStorage && window.localStorage) {
-            message = "объекты sessionStorage и localstorage поддерживаются";
-            console.log('объекты sessionStorage и localstorage поддерживаются');
-            $('.console').html('<h1>' + message + '</h1>');
-        } else {
-            // объекты sessionStorage и localstorage не поддерживаются
-            console.log('объекты sessionStorage и localstorage не поддерживаются');
-        }
+    $("#reset").click(function () {
+        document.location.reload(true);
     });
 
+    $('.btnGoSuc').on('click', function () {
 
-    // Пример try..catch без ошибок
+        //Создаём запрос
+        $.ajax({
+            url: 'http://jsonplaceholder.typicode.com/',
+            success: function () {
+                $('#console').html('<div class="alert alert-success" role="alert">4: Обмен завершен!</div>');
 
-    $('#tryThis').on('click', () => {
-        try {
-            message = 'Начало блока try';
-            console.log('Начало блока try'); //
-            $('.console').html('<h2>' + message + '</h2>');
-            // .. код без ошибок
-            message = 'Кот гуляет сам по себе...';
-            $('.console').append('<h2>' + message + '</h2>');
-            console.log("Кот гуляет сам по себе...");
-            message = 'Конец блока try';
-            $('.console').append('<h2>' + message + '</h2>');
-            console.log('Конец блока try'); //
-
-        } catch (e) {
-            console.log('Блок catch не получит управление, так как нет ошибок'); //
-            console.log('Здесь кот мог бы ловить мышей, но их нет');
-        }
-        message = 'Кот продолжит гулять сам по себе...';
-        $('.console').append('<h2>' + message + '</h2>');
-        console.log("Кот продолжит гулять сам по себе...");
-    });
-
-
-    // Пример try..catch с ошибкой
-
-    $('#catchThis').on('click', () => {
-        try {
-            message = 'Начало блока try';
-            console.log('Начало блока try'); //
-            $('.console').html('<h2>' + message + '</h2>');
-            // .. код с ошибкой
-
-            blablabla; // ошибка, переменная не определена!
-
-            message = 'Кот гуляет сам по себе...';
-            $('.console').append('<h2>' + message + '</h2>');
-            console.log("Кот гуляет сам по себе...");
-            message = 'Конец блока try';
-            $('.console').append('<h2>' + message + '</h2>');
-            console.log('Конец блока try'); //
-
-        } catch (e) {
-            console.log('Блок catch получит управление. Ошибка' + e.name + ":" + e.message + "\n" + e.stack); //
-            console.log('Здесь кот ловит мышей');
-            message = 'Блок catch получит управление. Ошибка' + e.name + ":" + e.message + "<br>" + e.stack;
-            $('.console').append('<h2>' + message + '</h2>');
-        }
-        message = 'Кот продолжит гулять сам по себе...';
-        $('.console').append('<h2>' + message + '</h2>');
-        console.log("Кот продолжит гулять сам по себе...");
-    });
-
-    // Секцию finally используют, чтобы завершить начатые операции при любом варианте развития событий.
-    // Например, мы хотим подсчитать время на выполнение функции sum(n), которая должна возвратить сумму чисел от 1 до n и работает рекурсивно:
-
-    function sum(n) {
-        return n ? (n + sum(n - 1)) : 0;
-    }
-
-    $('#finallyThis').on('click', () => {
-
-        var n = 100;
-        var start = new Date();
-
-        try {
-            var result = sum(n);
-        } catch (e) {
-            result = 0;
-        } finally {
-            var diff = new Date() - start;
-        }
-
-        console.log(result ? result : 'ошибка из-за слишком глубокой рекурсии');
-        console.log("Выполнение заняло " + diff);
-
-        message = 'Выполнение заняло ' + diff;
-        $('.console').html('<h2>' + message + '</h2>');
-    });
-
-
-
-    // QUOTA_EXCEEDED_ERR
-
-
-    $('#quotaLS').on('click', () => {
-
-        try {
-            localStorage.setItem("name", "Hello World!"); //saves to the database, "key", "value"
-            message = '“QUOTA_EXCEEDED_ERR” is the exception that will get thrown if you exceed your storage quota of 5 megabytes.';
-            $('.console').html('<h2>' + message + '</h2>');
-        } catch (e) {
-            if (e == QUOTA_EXCEEDED_ERR) {
-                alert('Превышен лимит'); //data wasn't successfully saved due to quota exceed so throw an error
             }
-        }
-    });
-
-    // var exception;
-    // var repeat = function(str, x) { return new Array(x+1).join(str); };
-    // var too_big = repeat("x", 12*1024*1024/2); // each JS character is 2 bytes
-    // localStorage.clear();
-    // try {
-    //   localStorage.setItem("test", too_big);
-    // } catch (e) {
-    //   exception = e;
-    // }
-
-
-    // Метод setItem(key,value) предназначен для добавления в хранилище элемента с указанным ключом (key) и значением (value). 
-    // Если в хранилище уже есть элемент с указанным ключом (key), то в этом случае произойдет изменения его значения (value).
-
-    $('#setItem').on('click', () => {
-
-        try {
-            localStorage.setItem("name", "Hello Local Storage World!"); //saves to the database, "key", "value"
-            message = 'Если в хранилище уже есть элемент с указанным ключом (key), то в этом случае произойдет изменения его значения (value)';
-            $('.console').html('<h2>' + message + '</h2>');
-        } catch (e) {
-            if (e == QUOTA_EXCEEDED_ERR) {
-                alert('Превышен лимит'); //data wasn't successfully saved due to quota exceed so throw an error
-            }
-        }
+        });
     });
 
 
-    // Метод Storage.getItem(Ключ)  
+    $('.btnGoJson').on('click', function(){
+        //Создаём запрос
+        var url = 'https://api.myjson.com/bins/zrs3y';
+    
+        $.ajax({
+            url: url,
+            method: 'GET'
+        }).then(
+            function(json_data) {
+            console.log(json_data);
+        });
+    
+      });
 
-    $('#getItem').on('click', () => {
-        try {
-            // localStorage.getItem("name");//
-            message = 'В хранилище есть элемент с указанным ключом (name) ' + localStorage.getItem("name");
-            $('.console').html('<h2>' + message + '</h2>');
-        } catch (e) {
-            message = 'В хранилище нет элемента с указанным ключом (name)';
-            $('.console').html('<h2>' + message + '</h2>');
-        }
-    });
+    $('.btnGoDat').on('click', function () {
 
-    function saveCartTest(shoppingCart) {
+        //Создаём запрос
+        $.ajax({
+            url: 'http://jsonplaceholder.typicode.com/',
 
-        if (window.localStorage) {
-            console.log(JSON.stringify(shoppingCart));
-            message = 'shoppingCart in localStorage: <br>' + JSON.stringify(shoppingCart);
-            $('.console').html('<h2>' + message + '</h2>');
-        }
-    }
+            beforeSend: function () {
+                $('#console').html('<div class="alert alert-secondary" role="alert">1: Подготовка к отправке...</div>');
+            },
 
+            error: function(xhr){
+                $('#console').html('<div class="alert alert-danger" role="alert">Ошибка: сервер вернул статус: '+ xhr.statusText +'</div>');
+                $("#printResult").html("<b>Прибыли данные: "+xhr.responseText+"</b>");
+            },
 
-    $('#saveCart').on('click', () => {
+            dataFilter: function (data, dataType)
+         {
 
-        var shoppingCartTest = [];
+          var text = $('#console').html();
+            $('#console').html(text + '<div class="alert alert-warning" role="alert">3: Идет data Filter...</div>');
 
-        let itemTest = {
-            Id: 1,
-            Product: "name",
-            Price: 111,
-            Quantity: 2,
-            Picture: "picture"
-        };
-
-        shoppingCartTest.push(itemTest);
-
-        saveCartTest(shoppingCartTest);
-    });
-
-
-
-    // Вызываем функцию
-    // saveCart(shoppingCart);
-
-    function saveCartIntoLocalStorage(shoppingCart) {
-
-        if (window.localStorage) {
-            localStorage.shoppingCartTest = JSON.stringify(shoppingCart);
-        }
-    }
-
-    $('#saveCartInto').on('click', () => {
-
-        let shoppingCartTest = [];
-
-        let itemTest = {
-            Id: 1,
-            Product: "name",
-            Price: 111,
-            Quantity: 2,
-            Picture: "picture"
-        };
-
-        shoppingCartTest.push(itemTest);
-
-        saveCartIntoLocalStorage(shoppingCartTest);
-
-        // Получим наш сериализованный объект через API
-
-        var shoppingCartObj = localStorage.getItem("shoppingCartTest");
-
-        console.log(shoppingCartObj);
-
-        shoppingCartObj = localStorage.shoppingCartTest;
-
-        console.log(shoppingCartObj);
-
-        if (localStorage.shoppingCartTest) {
-            shoppingCartObj = JSON.parse(localStorage.shoppingCartTest);
-        }
-
-        console.log(shoppingCartObj);
-
-        message = localStorage.shoppingCartTest;
-        $('.console').html('<h2>' + message + '</h2>');
-
-    });
-
-    // 
-
-    $('#getCartData').on('click', () => {
-        if (localStorage.shoppingCartTest) {
-            var shoppingCartData; // данные
-            try {
-                shoppingCartData = JSON.parse(localStorage.shoppingCartTest);
-                if (!shoppingCartData.name) {
-                    throw new SyntaxError("Данные некорректны");
-                }
-
-                blabla(); // произошла непредусмотренная ошибка
-
-            } catch (e) {
-                if (e.name == "SyntaxError") {
-                    console.log("Извините, в данных ошибка");
-                    message = 'Извините, в данных ошибка';
-                    $('.console').html('<h2>' + message + '</h2>');
+          if (dataType == "json") {
+                    var filteredData = $.parseJSON(data);
+                    return JSON.stringify(filteredData);
                 } else {
-                    throw e;
+                   return data;
                 }
-                // console.log("Извините, в данных ошибка");
-                // message = 'Извините, в данных ошибка';
-                // $('.console').html('<h2>'+message+'</h2>');
-            }
-        }
-    });
+        },
 
-
-    // В следующем примере ошибки обрабатываются внешним try..catch:
-
-    function readData() {
-        // try..catch внутри readData умеет обрабатывать только SyntaxError
-        try {
-            let shoppingCartData = JSON.parse(localStorage.shoppingCartTest);
-            // 
-            blabla(); // ошибка!
-        } catch (e) {
-            if (e.name != 'SyntaxError') {
-                throw e; // пробрасываем
-            }
-        }
-    }
-
-    // try..catch внешний умеет обрабатывать все ошибки.
-    // Без внешнего проброшенная ошибка «вывалилась» бы в консоль с остановкой скрипта.
-
-    $('#errorCartData').on('click', () => {
-        try {
-            readData();
-        } catch (e) {
-            message = 'Поймал во внешнем catch: ' + e;
-            $('.console').html('<h2>' + message + '</h2>');
-            console.log("Поймал во внешнем catch: " + e); // ловим
-        }
-    });
-    
-    $('#showCart').on('click', () => {
-
-        let shoppingCart = [];
-
-        // После получения данных из LocalStorage - производим обратное преобразование
-        // Получим наш сериализованный объект через API
-        // Одновременно преобразуем к обычному объекту JavaScript
-
-        if (localStorage.shoppingCartTest) {
-            shoppingCart = JSON.parse(localStorage.shoppingCartTest);
-        }
-
-        function showCart(shoppingCart) {
-            if (shoppingCart.length === 0) {
-                console.log("Your Shopping Cart is Empty!");
-                message = 'Your Shopping Cart is Empty!';
-                $('.console').html('<h2>' + message + '</h2>');
-
-                return;
-            } else {
-                console.log("Your Shopping Cart Contains: ", shoppingCart.length, " Items");
-                message = "Your Shopping Cart Contains: " + shoppingCart.length + " Items";
-                $('.console').html('<h2>' + message + '</h2>');
-                return;
-            }
-        }
-        showCart(shoppingCart);
+            success: function (data) {
+                $('#console').html('<div class="alert alert-success" role="alert">4: Обмен завершен!</div>');
+                $("#printResult").html("<b>Прибыли данные: " + data + "</b>");
+                console.log(data);
+            },
+            complete: function() {
+                var text = $('#console').html(); 
+                $('#console').html(text + '<div class="alert alert-primary" role="alert">5: AJAX завершен!</div>');
+             }
+        });
 
     });
 
 
-    function saveCart(shoppingCart) {
+    function CreateRequest() {
+        var httpRequest = false;
 
-        if (window.localStorage) {
-            localStorage.shoppingCart = JSON.stringify(shoppingCart);
-
-        }
-    }
-
-    function showCart(shoppingCart) {
-        if (shoppingCart.length == 0) {
-            console.log("Your Shopping Cart is Empty!");
-            return;
-        } else {
-            console.log("Your Shopping Cart Contains: ", shoppingCart.length, " Items");
-            $(".cart-items").empty();
-            for (let i in shoppingCart) {
-                let $template = $($('#cartItem').html()),
-                    item = shoppingCart[i];
-
-                $template.find("span.item-quantities").text(item.Quantity);
-                $template.find(".item-name").text(item.Product);
-                $template.find('.item-price').text(item.Price);
-                $template.find('.item-prices').text(item.Quantity * item.Price);
-                $template.find('span.qty').attr('style', 'background-image:' + 'url(' + item.Picture + ')');
-                $(".cart-items").append($template);
-            }
-            // return;
-        }
-    }
-
-    //
-
-    var shoppingCart = [];
-
-    // После получения данных из LocalStorage - производим обратное преобразование
-    // Получим наш сериализованный объект через API
-    // Одновременно преобразуем к обычному объекту JavaScript
-
-
-    function ReadError(message, cause) {
-        this.message = message;
-        this.cause = cause;
-        this.name = 'ReadError';
-        this.stack = cause.stack;
-    }
-
-    function getCartData() {
-        if (localStorage.shoppingCart) {
+        if (window.XMLHttpRequest) {
+            //Gecko-совместимые браузеры, Safari, Konqueror
+            httpRequest = new XMLHttpRequest();
+            httpRequest.overrideMimeType('text/xml');
+        } else if (window.ActiveXObject) {
+            //Internet explorer
             try {
-                shoppingCart = JSON.parse(localStorage.shoppingCart);
-            } catch (e) {
-                if (e.name == 'URIError') {
-                    throw new ReadError("Ошибка в URI", e);
-                } else if (e.name == 'SyntaxError') {
-                    throw new ReadError("Синтаксическая ошибка в данных", e);
-                } else {
-                    throw e; // пробрасываем
+                httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch (CatchException) {
+                httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+            }
+        }
+
+        if (!httpRequest) {
+            console.log("Невозможно создать XMLHttpRequest");
+        }
+
+        return httpRequest;
+    }
+    // Пользователь нажимает на ссылку 
+    // "Запустить скрипт" в браузере; 
+
+
+    document.querySelector('.btnGo').addEventListener('click', function () {
+
+        //Создаём запрос
+
+        var request = CreateRequest();
+
+        var url = 'http://jsonplaceholder.typicode.com/';
+
+        //Проверяем существование запроса
+
+        if (!request) {
+            console.log("Невозможно создать XMLHttpRequest");
+        } else {
+            console.log("Ура! Мы создали XMLHttpRequest. Что с ним делать?");
+
+            request.onreadystatechange = function () {
+                switch (request.readyState) {
+                    case 1:
+                        print_console('<div class="alert alert-success" role="alert">1: Подготовка к отправке...</div>');
+                        break
+                    case 2:
+                        print_console('<div class="alert alert-primary" role="alert">2: Отправлен...</div>');
+                        break
+                    case 3:
+                        print_console('<div class="alert alert-warning" role="alert">3: Идет обмен...</div>');
+                        break
+                    case 4:
+                        {
+                            try {
+                                if (request.status == 200) {
+                                    print_console('<div class="alert alert-success" role="alert">4: Обмен завершен!</div>');
+                                    document.getElementById("printResult").innerHTML = "<b>" + request.responseText + "</b>";
+                                } else if (request.status == 404) {
+                                    print_console('<div class="alert alert-danger" role="alert">Ошибка: запрашиваемый скрипт не найден!</div>');
+                                } else {
+                                    print_console('<div class="alert alert-danger" role="alert">Ошибка: сервер вернул статус: ' + request.status + '</div>');
+                                }
+
+                            } catch (e) {
+                                print_console('<div class="alert alert-danger" role="alert">Произошло исключение:  ' + e.description + '</div>');
+                            }
+                            break
+                        }
                 }
             }
+            request.open('GET', url, true);
+            this.style.display = 'none';
+            request.send('');
         }
+    })
+
+    function print_console(text) {
+        document.getElementById("console").innerHTML += text;
     }
 
-    try {
-        getCartData();
-    } catch (e) {
-        if (e.name === 'ReadError') {
-            console.log(e.message);
-            console.log(e.cause); // оригинальная ошибка-причина
-        } else {
-            throw e;
-        }
-    }
-    console.log(localStorage.shoppingCart);
-    console.log(JSON.parse(localStorage.shoppingCart));
-    console.log(shoppingCart);
-
-    function findObjectByKey(array, key, value) {
-        for (var i = 0; i < array.length; i++) {
-            if (array[i][key] === value) {
-                return array[i];
-            }
-        }
-        return null;
-    }
-    
-    var shoppingCartObj = findObjectByKey(shoppingCart, 'Id', "3");  
-    console.log(shoppingCartObj);
-
-
-    let obj = shoppingCart.find(obj => obj.Id == "3");
-    console.log(obj);
-
-    // Возможно, вы используете jQuery в своем проекте, и если это так, вы можете использовать функцию grep jQuery следующим образом:
-
-    var objQ = $.grep(shoppingCart, function(obj){return obj.Id === "3";})[0];
-    console.log(objQ);
-    
-    let index = "3";
-    
-    let firstIndex = shoppingCart.indexOf(shoppingCart.find(x => x.Id === index));
-
-    console.log(shoppingCart[firstIndex]);
-    
 });

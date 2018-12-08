@@ -1,194 +1,67 @@
-<!doctype html>
-<!-- comments index.html -->
-<html class="no-js" lang="">
-<include src="./partials/_head.html"></include>
+<!DOCTYPE html>
+<html lang="en">
 
-<style>
-    /* Content */
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Template with Bootstrap</title>
+</head>
 
-    section {
-        margin-top: 2em;
-    }
-
-    /* Wrapper */
-
-    .wrapper {
-        margin-bottom: 5em;
-        padding: 5em;
-    }
-
-
-    /* Containers */
-
-    .container {
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 120rem;
-        width: 90%;
-        overflow: hidden;
-    }
-
-    .page {
-        height: 100vh;
-    }
-
-    h2 {
-        font-size: 2rem;
-        padding-top: 3em;
-    }
-
-    .red_border {
-        color: aquamarine;
-        background-color: black;
-        border: crimson solid 2px;
-    }
-
-    .show1 {
-        display: none;
-        background-color: aquamarine;
-    }
-
-    .hide1 {
-        display: block;
-        background-color: aquamarine;
-    }
-
-    .console {
-        color: aquamarine;
-        background-color: black;
-        border: crimson solid 2px;
-        width: 80%;
-        height: auto;
-        margin: 1.5rem auto;
-        padding: 1rem;
-    }
-</style>
-
-<body>
-
-    <!-- Add your site or application content here -->
-
-    <!-- Header -->
-    <include src="./partials/_header.html"></include>
-
-    <!-- Main -->
-    <section class="wrapper container special">
-
-        <h1>Hello World!</h1>
-        <article class="page">
-            <h2 id="id1">localStorage</h2>
-            <div id="nod1">
-                localStorage - это объект класса Storage, доступный как свойство глобального объекта браузера (window).
+<body class="text-center">
+    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+        <header class="masthead mb-auto">
+            <div class="inner">
+                <h3 class="masthead-brand">Hy Ajax! </h3>
+                <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="/">Home</a>
+                    <a class="nav-link" href="./fetch.test.html">Fetch</a>
+                    <a class="nav-link" href="#">Contact</a>
+                </nav>
             </div>
-            <button id="showLS">show localStorage</button>
-            <div class="console"></div>
-        </article>
+        </header>
 
-        <article class="page">
-            <h2 id="id2">try..catch</h2>
-            <p>Конструкция try..catch состоит из двух основных блоков: try, и затем catch:</p>
-            <ul>
-                <li>Выполняется код внутри блока try.</li>
-                <li>Если в нём ошибок нет, то блок catch(err) игнорируется, то есть выполнение доходит до конца try и
-                    потом прыгает через catch.</li>
-                <li>Если в нём возникнет ошибка, то выполнение try на ней прерывается, и управление прыгает в начало
-                    блока catch(err).</li>
-                <li>При этом переменная err будет содержать объект ошибки с подробной информацией о произошедшем.</li>
-            </ul>
-            <button id="tryThis">try This</button>
-            <div class="console"></div>
-        </article>
+        <!-- Add your site or application content here -->
+        <main role="main" class="inner cover">
+                
+            <div class="card text-center">
+                <div class="card-header">
+                    <h1 class="cover-heading">Hello, AJAX!</h1>
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title">Консоль выполнения запроса:</h4>
+                    
+                    <p class="lead">
+                        <button type="button" class="btn btn-primary btnGo">Запустить скрипт</button>
+                        <button type="button" id="reset" class="btn btn-danger">Retry</button>
 
-        <article class="page">
-            <h2 id="id3">catch</h2>
+                        <button type="button" class="btn btn-success btnGoSuc">Success</button>
+                        <button type="button" class="btn btn-info btnGoDat">Get Data</button>
+                        <button type="button" class="btn btn-success btnGoJson">Get JSON</button>
+                        
+                        
+                    </p>
+                    
+                </div>
 
-            <p>
-                .fadeIn() - показывает элементы на странице за счет плавного изменения прозрачности.
-            </p>
+                <p class="card-text" id="console">Обрабатываем ответ сервера.</p>
 
-            <button id="catchThis">Catch This</button>
-            <div class="console"></div>
+                <div class="card-footer text-muted" id="printResult">
+                    ответ сервера
+                </div>
+            </div>
+            
+        </main>
 
+        
 
-        </article>
-        <article class="page">
-            <h2 id="id4">Секция finally</h2>
-            <p>Секцию finally используют, чтобы завершить начатые операции при любом варианте развития событий.</p>
-
-            <button id="finallyThis">Finally This</button>
-            <div class="console"></div>
-
-        </article>
-        <article class="page">
-            <h2 id="id5">QUOTA_EXCEEDED_ERR</h2>
-            <span>Браузеры выделяют 5мб под localStorage. И если вы его превысите — получите исключение
-                QUOTA_EXCEEDED_ERR. С его помощью можно проверять есть ли в вашем хранилище еще место.
-            </span>
-
-            <button id="quotaLS">QUOTA</button>
-            <div class="console"></div>
-
-        </article>
-
-        <article class="page">
-            <h2 id="id6">Метод setItem</h2>
-            <p>
-                Метод setItem(key,value) предназначен для добавления в хранилище элемента с указанным ключом (key) и
-                значением (value).
-                Если в хранилище уже есть элемент с указанным ключом (key), то в этом случае произойдет изменения его
-                значения (value).
-
-            </p>
-            <button id="setItem">setItem</button>
-            <div class="console"></div>
-        </article>
-        <article class="page">
-            <h2 id="id7">Метод getItem</h2>
-            <p>.slideUp()сворачивает элементы на странице (за счет плавного изменения высоты элементов).
-            </p>
-            <button id="getItem">getItem</button>
-            <div class="console"></div>
-        </article>
-        <article class="page">
-            <h2 id="id8">saveCart</h2>
-
-            <button id="saveCart">saveCart</button>
-            <div class="console"></div>
-        </article>
-        <article class="page">
-            <h2 id="id9">Save Cart Into LS</h2>
-
-            <button id="saveCartInto">Save Cart</button>
-            <div class="console"></div>
-        </article>
-
-        <article class="page">
-            <h2 id="id10">Get Cart Data</h2>
-
-            <button id="getCartData">Get Cart Data</button>
-            <div class="console"></div>
-        </article>
-        <article class="page">
-            <h2 id="id11">Error Cart Data</h2>
-
-            <button id="errorCartData">Error Cart Data</button>
-            <div class="console"></div>
-        </article>
-        <article class="page">
-            <h2 id="id12">Show Cart Data</h2>
-
-            <button id="showCart">Show Cart Data</button>
-            <div class="console"></div>
-        </article>
-
-
-
-    </section> <!-- end content-wrap -->
-
-
-    <!-- Footer -->
-    <include src="./partials/_footer.html"></include>
+        <!-- Footer -->
+        <footer class="mastfoot mt-auto">
+            <div class="inner">
+                <p id="copy">&copy; CouchJanus 2020</p>
+            </div>
+        </footer>
+    </div>
 
     <script src="./js/test.js"></script>
 </body>

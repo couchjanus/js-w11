@@ -10683,58 +10683,7 @@ if ( !noGlobal ) {
 return jQuery;
 } );
 
-},{"process":"../../../.nvm/versions/node/v11.0.0/lib/node_modules/parcel-bundler/node_modules/process/browser.js"}],"js/data.js":[function(require,module,exports) {
-var data = [{
-  id: 0,
-  name: "Cool Cat",
-  price: 177,
-  picture: "/images/cat1.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 1,
-  name: "Black Cat",
-  price: 666,
-  picture: "/images/cat2.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 2,
-  name: "Red Cat",
-  price: 555,
-  picture: "/images/cat3.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 3,
-  name: "Blue Cat",
-  price: 444,
-  picture: "/images/cat4.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 4,
-  name: "Green Cat",
-  price: 333,
-  picture: "/images/cat5.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 5,
-  name: "Grey Cat",
-  price: 222,
-  picture: "/images/cat6.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 6,
-  name: "Orange Cat",
-  price: 777,
-  picture: "/images/cat7.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}, {
-  id: 7,
-  name: "Pretty Cat",
-  price: 888,
-  picture: "/images/cat8.jpg",
-  description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus dignissimos, maxime ea excepturi veritatis itaque."
-}];
-module.exports = data;
-},{}],"js/lib.js":[function(require,module,exports) {
+},{"process":"../../../.nvm/versions/node/v11.0.0/lib/node_modules/parcel-bundler/node_modules/process/browser.js"}],"js/lib.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10746,6 +10695,9 @@ exports.vanil_buyCancel = vanil_buyCancel;
 exports.vanila_toggle_panel = vanila_toggle_panel;
 exports.makeProductItem = makeProductItem;
 exports.make$ProductItem = make$ProductItem;
+exports.getCartData = getCartData;
+exports.saveCart = saveCart;
+exports.showCart = showCart;
 
 function toggle_panel(panel, background_layer) {
   if (panel.hasClass('show-sidebar')) {
@@ -10787,79 +10739,87 @@ function vanila_toggle_panel(panel, background_layer) {
     panel.classList.add('show-sidebar');
     background_layer.classList.add('is-visible');
   }
-} // export function makeProductItem($template, product){
-//     $template.querySelector('.product-menu').setAttribute('productId', product["id"]);
-//     $template.querySelector('.product-name').textContent = product.name;
-//     $template.querySelector('img').setAttribute('src', product.picture);
-//     $template.querySelector('.product-price').textContent = product["price"];
-//     $template.querySelector('.product-description').textContent = product["description"];
-//     return $template;
-// }
-
+}
 
 function makeProductItem($template, product) {
-  var keys = Object.keys(product); // console.log(key + ': ' + product[key]);
-
-  keys.forEach(function (key) {
-    var selector = '.product-' + key;
-
-    switch (key) {
-      case 'id':
-        $template.querySelector(selector).setAttribute('productId', product[key]);
-        break;
-
-      case 'picture':
-        $template.querySelector(selector).setAttribute('src', product[key]);
-        break;
-
-      default:
-        $template.querySelector(selector).textContent = product[key];
-    }
-  });
+  $template.querySelector('.product-menu').setAttribute('productId', product["id"]);
+  $template.querySelector('.product-name').textContent = product.name;
+  $template.querySelector('img').setAttribute('src', product.picture);
+  $template.querySelector('.product-price').textContent = product["price"];
+  $template.querySelector('.product-description').textContent = product["description"];
   return $template;
-} // export function make$ProductItem($template, product){
-//     $template.find('.product-menu').attr('productId', product["id"]);
-//     $template.find('.product-name').text(product.name);
-//     $template.find('img').attr('src', product.picture);
-//     $template.find('.product-price').text(product["price"]);
-//     $template.find('.product-description').text( product["description"]);
+} // export function makeProductItem($template, product){
+//     const keys = Object.keys(product);
+//     // console.log(key + ': ' + product[key]);
+//     keys.forEach(function(key) {
+//         let selector = '.product-'+ key;
+//         switch(key){
+//             case 'id':
+//                 $template.querySelector(selector).setAttribute('productId', product[key]);
+//                 break;
+//             case 'picture':
+//                 $template.querySelector(selector).setAttribute('src', product[key]);
+//                 break;
+//             default:
+//                 $template.querySelector(selector).textContent = product[key];
+//         }
+//     });
 //     return $template;
 // }
 
 
 function make$ProductItem($template, product) {
-  var keys = Object.keys(product);
-  keys.forEach(function (key) {
-    var selector = '.product-' + key;
-
-    switch (key) {
-      case 'id':
-        $template.find(selector).attr('productId', product[key]);
-        break;
-
-      case 'picture':
-        $template.find(selector).attr('src', product[key]);
-        break;
-
-      default:
-        $template.find(selector).text(product[key]);
-    }
-  });
+  $template.find('.product-menu').attr('productId', product["id"]);
+  $template.find('.product-name').text(product.name);
+  $template.find('img').attr('src', product.picture);
+  $template.find('.product-price').text(product["price"]);
+  $template.find('.product-description').text(product["description"]);
   return $template;
+} // export function make$ProductItem($template, product){
+//     const keys = Object.keys(product);
+//     keys.forEach(function(key) {
+//         let selector = '.product-'+ key;
+//         switch(key){
+//             case 'id':
+//                 $template.find(selector).attr('productId', product[key]);
+//                 break;
+//             case 'picture':
+//                 $template.find(selector).attr('src', product[key]);
+//                 break;
+//             default:
+//                 $template.find(selector).text(product[key]);
+//         }
+//     });
+//     return $template;
+// }
+// После получения данных из LocalStorage - производим обратное преобразование
+// Получим наш сериализованный объект через API
+// Одновременно преобразуем к обычному объекту JavaScript
+
+
+function ReadError(message, cause) {
+  this.message = message;
+  this.cause = cause;
+  this.name = 'ReadError';
+  this.stack = cause.stack;
 }
-},{}],"js/index.js":[function(require,module,exports) {
-"use strict";
 
-var _jquery = _interopRequireDefault(require("jquery"));
-
-var _data = _interopRequireDefault(require("./data"));
-
-var _lib = require("./lib");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-// export for others scripts to use
-window.$ = window.jQuery = _jquery.default;
+function getCartData(shoppingCart) {
+  if (localStorage.shoppingCart) {
+    try {
+      shoppingCart = JSON.parse(localStorage.shoppingCart);
+      return shoppingCart;
+    } catch (e) {
+      if (e.name == 'URIError') {
+        throw new ReadError("Ошибка в URI", e);
+      } else if (e.name == 'SyntaxError') {
+        throw new ReadError("Синтаксическая ошибка в данных", e);
+      } else {
+        throw e; // пробрасываем
+      }
+    }
+  }
+}
 
 function saveCart(shoppingCart) {
   if (window.localStorage) {
@@ -10873,199 +10833,146 @@ function showCart(shoppingCart) {
     return;
   } else {
     console.log("Your Shopping Cart Contains: ", shoppingCart.length, " Items");
-    (0, _jquery.default)(".cart-items").empty();
+    $(".cart-items").empty();
 
     for (var i in shoppingCart) {
-      var $template = (0, _jquery.default)((0, _jquery.default)('#cartItem').html()),
+      var $template = $($('#cartItem').html()),
           item = shoppingCart[i];
       $template.find("span.item-quantities").text(item.Quantity);
       $template.find(".item-name").text(item.Product);
       $template.find('.item-price').text(item.Price);
       $template.find('.item-prices').text(item.Quantity * item.Price);
       $template.find('span.qty').attr('style', 'background-image:' + 'url(' + item.Picture + ')');
-      (0, _jquery.default)(".cart-items").append($template);
+      $(".cart-items").append($template);
     } // return;
 
   }
-} //
-
-
-var shoppingCart = []; // После получения данных из LocalStorage - производим обратное преобразование
-// Получим наш сериализованный объект через API
-// Одновременно преобразуем к обычному объекту JavaScript
-
-function ReadError(message, cause) {
-  this.message = message;
-  this.cause = cause;
-  this.name = 'ReadError';
-  this.stack = cause.stack;
 }
+},{}],"js/index.js":[function(require,module,exports) {
+"use strict";
 
-function getCartData() {
-  if (localStorage.shoppingCart) {
-    try {
-      shoppingCart = JSON.parse(localStorage.shoppingCart);
-    } catch (e) {
-      if (e.name == 'URIError') {
-        throw new ReadError("Ошибка в URI", e);
-      } else if (e.name == 'SyntaxError') {
-        throw new ReadError("Синтаксическая ошибка в данных", e);
-      } else {
-        throw e; // пробрасываем
-      }
-    }
-  }
-}
+var _jquery = _interopRequireDefault(require("jquery"));
 
-try {
-  getCartData();
-} catch (e) {
-  if (e.name === 'ReadError') {
-    console.log(e.message);
-    console.log(e.cause); // оригинальная ошибка-причина
-  } else {
-    throw e;
-  }
-}
+var _lib = require("./lib");
 
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import data from './data';
+window.$ = window.jQuery = _jquery.default;
+var data = []; // var url = 'https://api.myjson.com/bins/zrs3y';
+
+var url = 'http://localhost:3000/catalog';
 (0, _jquery.default)(function () {
-  // Контент шаблона
-  // var $productTemplate = $($('#productItem').html());
-  // for (var i = 0; i < Object.keys(data).length; i++) {
-  //     var $productTemplate = $($('#productItem').html());
-  //     $(".grid-container").append(make$ProductItem($productTemplate, data[i]));
-  // }
-  var cart_trigger = (0, _jquery.default)('#cart-trigger');
-  (0, _jquery.default)("#cart-trigger").on('click', function () {
-    // show shopping cart 
-    showCart(shoppingCart);
-    (0, _lib.toggle_panel)((0, _jquery.default)('#cart-sidebar'), (0, _jquery.default)('#shadow-layer'));
-  });
-  (0, _jquery.default)("#cart-sidebar .remove").on('click', function () {
-    (0, _lib.toggle_panel)((0, _jquery.default)('#cart-sidebar'), (0, _jquery.default)('#shadow-layer'));
-  });
-  var hamburgerToggle = (0, _jquery.default)('.fa-bars');
-  hamburgerToggle.on('click', function (e) {
-    e.preventDefault();
-    (0, _jquery.default)('.nav-menu').toggleClass('active');
-  }); // $(".buy-now").each(function(index, element){
-  //     $(element).on('click', function (e) {
-  //       buyCancel(e.target, true);
-  //     });
-  // });
-  // $(".cancel").each(function(index, element){
-  //     $(element).on('click', function (e) {
-  //         buyCancel(e.target, false);
-  //     });
-  // });
-  // 
+  _jquery.default.ajax({
+    url: url,
+    method: 'GET'
+  }).then(function (json_data) {
+    for (var i in json_data) {
+      data.push(json_data[i]);
+    } // fetch(url).then((response) => response.json())
+    //    .then((data) => {
 
-  var $template = (0, _jquery.default)((0, _jquery.default)('#cartItem').html());
-  (0, _jquery.default)(".add-to-cart0").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      var template = $template.clone();
-      template.find(".item-quantities").text((0, _jquery.default)(this).parents(".product").find(".quantity").val());
-      template.find("span.item-name").text((0, _jquery.default)(this).parents(".product").children(".product-name").text());
-      template.find('.item-prices').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
-      template.find(".item-remove").on('click', function () {
-        (0, _jquery.default)(this).parent().remove();
-      });
-      (0, _jquery.default)(".cart-items").append(template); // Поиск элемента с заданным номером
 
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
+    var shoppingCart = [];
 
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
-        });
-      }
+    if (localStorage.shoppingCart) {
+      shoppingCart = JSON.parse(localStorage.shoppingCart);
+    } // Контент шаблона
+    // const $productTemplate = $($('#productItem').html());
 
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
+
+    var $productTemplate = document.getElementById("productItem").content;
+    data.forEach(function (item) {
+      document.querySelector('.grid-container').append(document.importNode((0, _lib.makeProductItem)($productTemplate, item), true));
+    });
+    (0, _jquery.default)("#cart-trigger").on('click', function () {
+      (0, _lib.showCart)(shoppingCart);
+      (0, _lib.toggle_panel)((0, _jquery.default)('#cart-sidebar'), (0, _jquery.default)('#shadow-layer'));
+    });
+    (0, _jquery.default)("#cart-sidebar .remove").on('click', function () {
+      (0, _lib.toggle_panel)((0, _jquery.default)('#cart-sidebar'), (0, _jquery.default)('#shadow-layer'));
+    });
+    (0, _jquery.default)('.fa-bars').on('click', function (e) {
+      e.preventDefault();
+      (0, _jquery.default)('.nav-menu').toggleClass('active');
+    });
+    (0, _jquery.default)(".buy-now").each(function (index, element) {
+      (0, _jquery.default)(element).on('click', function (e) {
+        (0, _lib.buyCancel)(e.target, true);
       });
     });
-  });
-  /**
-   * add-to-cart 01
-   */
-
-  (0, _jquery.default)(".add-to-cart1").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      var template = $template.clone();
-      template.find(".item-quantities").text((0, _jquery.default)(this).parents(".product").find(".quantity").val());
-      template.find("span.item-name").text((0, _jquery.default)(this).parents(".product").children(".product-name").text());
-      template.find('.item-prices').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
-      template.find(".item-remove").on('click', function () {
-        (0, _jquery.default)(this).parent().remove();
+    (0, _jquery.default)(".cancel").each(function (index, element) {
+      (0, _jquery.default)(element).on('click', function (e) {
+        (0, _lib.buyCancel)(e.target, false);
       });
-      (0, _jquery.default)(".cart-items").append(template); // Поиск элемента с заданным номером
+    }); // 
 
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
+    var $template = (0, _jquery.default)((0, _jquery.default)('#cartItem').html());
+    (0, _jquery.default)(".add-to-cart").each(function (index, element) {
+      (0, _jquery.default)(element).on('click', function (e) {
+        // Поиск элемента с заданным номером
+        var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
 
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
+        if (imgToDrag) {
+          var imgClone = imgToDrag.clone().offset({
+            top: imgToDrag.offset().top,
+            left: imgToDrag.offset().left
+          }).css({
+            'opacity': '0.5',
+            'position': 'absolute',
+            'height': '150px',
+            'width': '150px',
+            'z-index': '100'
+          }).appendTo((0, _jquery.default)('body')).animate({
+            'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
+            'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
+            'width': 75,
+            'height': 75
+          }, 1000);
+          imgClone.animate({
+            'width': 0,
+            'height': 0
+          }, function () {
+            (0, _jquery.default)(this).detach();
+          });
+        }
+
+        var y = 180;
+        (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
+        (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
+        (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
+          (0, _jquery.default)(this).css({
+            'transform': 'rotateY(0deg)'
+          }).dequeue();
+          (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
+          (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
+          (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
+          (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
+          (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
         });
-      }
+        var id = (0, _jquery.default)(this).parents('.product-menu').attr("productId");
+        var quantity = (0, _jquery.default)(this).parents(".product-menu").find(".quantity").val();
 
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
+        for (var _i in shoppingCart) {
+          if (shoppingCart[_i].Id == id) {
+            shoppingCart[_i].Quantity = parseInt(shoppingCart[_i].Quantity) + parseInt(quantity);
+            (0, _lib.saveCart)(shoppingCart);
+            return;
+          }
+        }
+
+        var price = (0, _jquery.default)(this).parents(".product-menu").find(".product-price").text();
+        var name = (0, _jquery.default)(this).parents(".product").children(".product-name").text();
+        var picture = (0, _jquery.default)(this).parents(".product").find("img").attr('src');
+        var item = {
+          Id: id,
+          Product: name,
+          Price: price,
+          Quantity: quantity,
+          Picture: picture
+        };
+        shoppingCart.push(item);
+        (0, _lib.saveCart)(shoppingCart);
       });
     });
     (0, _jquery.default)('body').on('click', '.cart .clear-cart', function () {
@@ -11073,360 +10980,63 @@ try {
       (0, _jquery.default)(".cart-items").empty();
       shoppingCart = [];
     });
-  });
-  /**
-   * add-to-cart 02
-   */
-
-  (0, _jquery.default)(".add-to-cart2").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      var template = $template.clone();
-      template.find(".item-quantities").text((0, _jquery.default)(this).parents(".product").find(".quantity").val());
-      template.find("span.item-name").text((0, _jquery.default)(this).parents(".product").children(".product-name").text());
-      template.find('.item-prices').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
-      template.find(".item-remove").on('click', function () {
-        (0, _jquery.default)(this).parent().remove();
-      });
-      (0, _jquery.default)(".cart-items").append(template);
-      /**
-       * Подготовка данных для записи
-        */
-
-      var id = (0, _jquery.default)(this).parents('.product-menu').attr("productId");
-      console.log(id);
-      var price = (0, _jquery.default)(this).parents(".product-menu").find(".product-price").text();
-      console.log(price);
-      var name = (0, _jquery.default)(this).parents(".product").children(".product-name").text();
-      console.log(name);
-      var quantity = (0, _jquery.default)(this).parents(".product-menu").find(".quantity").val();
-      console.log(quantity);
-      var picture = (0, _jquery.default)(this).parents(".product").find("img").attr('src');
-      console.log(picture); // Поиск элемента с заданным номером
-
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
-
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
-        });
-      }
-
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
-      });
+    (0, _jquery.default)('body').on('click', '.cart-items .item-remove', function () {
+      var index = (0, _jquery.default)(this).parent().attr("id");
+      shoppingCart.splice(shoppingCart.indexOf(shoppingCart.find(function (x) {
+        return x.Id === index;
+      })), 1);
+      (0, _jquery.default)(this).parents('li').remove();
+      (0, _lib.saveCart)(shoppingCart);
     });
-  });
-  /**
-   * add-to-cart 03
-   */
-
-  (0, _jquery.default)(".add-to-cart3").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      var template = $template.clone();
-      template.find(".item-quantities").text((0, _jquery.default)(this).parents(".product").find(".quantity").val());
-      template.find("span.item-name").text((0, _jquery.default)(this).parents(".product").children(".product-name").text());
-      template.find('.item-prices').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
-      template.find(".item-remove").on('click', function () {
-        (0, _jquery.default)(this).parent().remove();
-      });
-      (0, _jquery.default)(".cart-items").append(template);
-      /**
-       * Подготовка данных для записи
-        */
-
-      var id = (0, _jquery.default)(this).parents('.product-menu').attr("productId");
-      var price = (0, _jquery.default)(this).parents(".product-menu").find(".product-price").text();
-      var name = (0, _jquery.default)(this).parents(".product").children(".product-name").text();
-      var quantity = (0, _jquery.default)(this).parents(".product-menu").find(".quantity").val();
-      var picture = (0, _jquery.default)(this).parents(".product").find("img").attr('src');
-      var item = {
-        Id: id,
-        Product: name,
-        Price: price,
-        Quantity: quantity,
-        Picture: picture
-      };
-      shoppingCart.push(item);
-      console.log(shoppingCart); // save shopping cart
-      // saveCart(shoppingCart);
-      // Поиск элемента с заданным номером
-
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
-
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
-        });
-      }
-
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
-      });
+    (0, _jquery.default)(".minus").click(function (e) {
+      var val = parseInt((0, _jquery.default)(e.target).next().attr('value'));
+      (0, _jquery.default)(this).next().attr('value', val - 1);
     });
-  });
-  /**
-   * 
-   *  version 4
-   */
-
-  (0, _jquery.default)(".add-to-cart4").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      var id = (0, _jquery.default)(this).parents('.product-menu').attr("productId");
-      var price = (0, _jquery.default)(this).parents(".product-menu").find(".product-price").text();
-      var name = (0, _jquery.default)(this).parents(".product").children(".product-name").text();
-      var quantity = (0, _jquery.default)(this).parents(".product-menu").find(".quantity").val();
-      var picture = (0, _jquery.default)(this).parents(".product").find("img").attr('src');
-
-      for (var i in shoppingCart) {
-        if (shoppingCart[i].Id == id) {
-          shoppingCart[i].Quantity = parseInt(shoppingCart[i].Quantity) + parseInt(quantity);
-          saveCart(shoppingCart);
-          return;
-        }
-      }
-
-      var item = {
-        Id: id,
-        Product: name,
-        Price: price,
-        Quantity: quantity,
-        Picture: picture
-      };
-      shoppingCart.push(item); // console.log(shoppingCart);
-
-      saveCart(shoppingCart); // Поиск элемента с заданным номером
-
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
-
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
-        });
-      }
-
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
-      });
+    (0, _jquery.default)(".plus").click(function (e) {
+      var val = parseInt((0, _jquery.default)(e.target).prev().attr('value'));
+      (0, _jquery.default)(this).prev().attr('value', val + 1);
     });
-  });
-  /**
-   * 
-   * last version
-   */
+    (0, _jquery.default)(".product-detail").each(function (index, element) {
+      (0, _jquery.default)(element).on('click', function () {
+        var $ptemplate = (0, _jquery.default)((0, _jquery.default)('#productDetail').html());
+        $ptemplate.find('.product-price').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
+        $ptemplate.find('.product-name').text((0, _jquery.default)(this).parents(".product").find(".product-name").text());
+        $ptemplate.find('img').eq(0).attr('src', 'images/cat3.jpg');
+        (0, _jquery.default)(".grid-container").empty();
+        (0, _jquery.default)(".grid-container").append($ptemplate);
+        var slideIndex = 1;
+        var prev = (0, _jquery.default)(".prev");
+        var next = (0, _jquery.default)(".next");
 
-  (0, _jquery.default)(".add-to-cart-last").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function (e) {
-      // Поиск элемента с заданным номером
-      var imgToDrag = (0, _jquery.default)(e.target).parents('.product').find("img").eq(0);
+        function showSlide(n) {
+          var i;
+          var x = (0, _jquery.default)(".slide");
 
-      if (imgToDrag) {
-        var imgClone = imgToDrag.clone().offset({
-          top: imgToDrag.offset().top,
-          left: imgToDrag.offset().left
-        }).css({
-          'opacity': '0.5',
-          'position': 'absolute',
-          'height': '150px',
-          'width': '150px',
-          'z-index': '100'
-        }).appendTo((0, _jquery.default)('body')).animate({
-          'top': (0, _jquery.default)('#cart-trigger').offset().top + 10,
-          'left': (0, _jquery.default)('#cart-trigger').offset().left + 10,
-          'width': 75,
-          'height': 75
-        }, 1000);
-        imgClone.animate({
-          'width': 0,
-          'height': 0
-        }, function () {
-          (0, _jquery.default)(this).detach();
+          if (n > x.length) {
+            slideIndex = 1;
+          }
+
+          if (n < 1) {
+            slideIndex = x.length;
+          }
+
+          for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+          }
+
+          x[slideIndex - 1].style.display = "block";
+        }
+
+        function nextPrev(n) {
+          showSlide(slideIndex += n);
+        }
+
+        next.click(function () {
+          nextPrev(1);
         });
-      }
-
-      var y = 180;
-      (0, _jquery.default)(e.target).parents('.product-wrapper').css('transform', 'rotateY(' + y + 'deg)');
-      (0, _jquery.default)(e.target).parents('.grid-item').find('.product-back').addClass('back-is-visible');
-      (0, _jquery.default)(e.target).parents('.product-wrapper').delay(3000).queue(function () {
-        (0, _jquery.default)(this).css({
-          'transform': 'rotateY(0deg)'
-        }).dequeue();
-        (0, _jquery.default)(e.target).parents('.product').find('p').slideDown();
-        (0, _jquery.default)(e.target).parents('.product').find('.product-menu').css('top', '80%');
-        (0, _jquery.default)(e.target).parents('.product').find('.product-detail').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.buy-now').toggle();
-        (0, _jquery.default)(e.target).parents('.product').find('.icon').toggle();
-      });
-      var id = (0, _jquery.default)(this).parents('.product-menu').attr("productId");
-      var quantity = (0, _jquery.default)(this).parents(".product-menu").find(".quantity").val();
-
-      for (var i in shoppingCart) {
-        if (shoppingCart[i].Id == id) {
-          shoppingCart[i].Quantity = parseInt(shoppingCart[i].Quantity) + parseInt(quantity);
-          saveCart(shoppingCart);
-          return;
-        }
-      }
-
-      var price = (0, _jquery.default)(this).parents(".product-menu").find(".product-price").text();
-      var name = (0, _jquery.default)(this).parents(".product").children(".product-name").text();
-      var picture = (0, _jquery.default)(this).parents(".product").find("img").attr('src');
-      var item = {
-        Id: id,
-        Product: name,
-        Price: price,
-        Quantity: quantity,
-        Picture: picture
-      };
-      shoppingCart.push(item);
-      saveCart(shoppingCart);
-    });
-  });
-  (0, _jquery.default)('body').on('click', '.cart .clear-cart', function () {
-    localStorage.removeItem('shoppingCart');
-    (0, _jquery.default)(".cart-items").empty();
-    shoppingCart = [];
-  });
-  (0, _jquery.default)('body').on('click', '.cart-items .item-remove', function () {
-    var index = (0, _jquery.default)(this).parent().attr("id"); // console.log('index= ', index);
-
-    shoppingCart.splice(shoppingCart.indexOf(shoppingCart.find(function (x) {
-      return x.Id === index;
-    })), 1);
-    (0, _jquery.default)(this).parents('li').remove();
-    saveCart(shoppingCart);
-  }); // $(".minus").click(function(e) {
-  //     var val = parseInt($(e.target).next().attr('value'));
-  //     $(this).next().attr('value', val-1);
-  // });
-  // $(".plus").click(function(e) {
-  //         var val = parseInt($(e.target).prev().attr('value'));
-  //         $(this).prev().attr('value', val+1);
-  // });
-
-  (0, _jquery.default)(".product-detail").each(function (index, element) {
-    (0, _jquery.default)(element).on('click', function () {
-      var $ptemplate = (0, _jquery.default)((0, _jquery.default)('#productDetail').html());
-      $ptemplate.find('.product-price').text((0, _jquery.default)(this).parents(".product").find(".product-price").text());
-      $ptemplate.find('.product-name').text((0, _jquery.default)(this).parents(".product").find(".product-name").text());
-      $ptemplate.find('img').eq(0).attr('src', 'images/cat3.jpg');
-      (0, _jquery.default)(".grid-container").empty();
-      (0, _jquery.default)(".grid-container").append($ptemplate);
-      var slideIndex = 1;
-      var prev = (0, _jquery.default)(".prev");
-      var next = (0, _jquery.default)(".next");
-
-      function showSlide(n) {
-        var i;
-        var x = (0, _jquery.default)(".slide");
-
-        if (n > x.length) {
-          slideIndex = 1;
-        }
-
-        if (n < 1) {
-          slideIndex = x.length;
-        }
-
-        for (i = 0; i < x.length; i++) {
-          x[i].style.display = "none";
-        }
-
-        x[slideIndex - 1].style.display = "block";
-      }
-
-      function nextPrev(n) {
-        showSlide(slideIndex += n);
-      }
-
-      next.click(function () {
-        nextPrev(1);
-      });
-      prev.click(function () {
-        nextPrev(-1);
+        prev.click(function () {
+          nextPrev(-1);
+        });
       });
     });
   });
@@ -11434,13 +11044,12 @@ try {
 
 document.addEventListener("DOMContentLoaded", ready);
 
-function ready() {
-  // Контент шаблона
-  var $productTemplate = document.getElementById("productItem").content;
-
-  _data.default.forEach(function (item) {
-    document.querySelector('.grid-container').append(document.importNode((0, _lib.makeProductItem)($productTemplate, item), true));
-  }); //     document.getElementById("cart-trigger").addEventListener('click', function () {
+function ready() {// Контент шаблона
+  // const $productTemplate = document.getElementById("productItem").content;
+  // data.forEach(function (item) {
+  //     document.querySelector('.grid-container').append(document.importNode(makeProductItem($productTemplate, item), true));
+  // });
+  //     document.getElementById("cart-trigger").addEventListener('click', function () {
   //         vanila_toggle_panel(document.getElementById("cart-sidebar"), document.getElementById("shadow-layer"));
   //     });
   //     document.querySelector("#cart-sidebar .remove").addEventListener('click', function () {
@@ -11452,26 +11061,24 @@ function ready() {
   //         e.preventDefault();
   //         document.querySelector('.nav-menu').classList.toggle('active');
   //     });
-
-
-  var buyNow = document.querySelectorAll('.buy-now'); // for (let element of buyNow) {
+  // const buyNow = document.querySelectorAll('.buy-now');
+  // for (let element of buyNow) {
   //     element.addEventListener('click', function (e) {
   //         vanil_buyCancel(e.target, true);
   //     });
   // }
-
-  Array.from(document.querySelectorAll('.buy-now')).forEach(function (element) {
-    element.addEventListener('click', function (e) {
-      (0, _lib.vanil_buyCancel)(e.target, true);
-    });
-  });
-  var cancel = document.getElementsByClassName('cancel');
-
-  for (var i = 0; i < cancel.length; i++) {
-    cancel[i].addEventListener('click', function (e) {
-      (0, _lib.vanil_buyCancel)(e.target, false);
-    });
-  } // Add product to Cart
+  // Array.from(document.querySelectorAll('.buy-now')).forEach((element) => {
+  //     element.addEventListener('click', (e) => {
+  //         vanil_buyCancel(e.target, true);
+  //     });
+  // });
+  // var cancel = document.getElementsByClassName('cancel');
+  // for (let i = 0; i < cancel.length; i++) {
+  //     cancel[i].addEventListener('click', function (e) {
+  //         vanil_buyCancel(e.target, false);
+  //     });
+  // }
+  // Add product to Cart
   // var addToCart = document.getElementsByClassName('add-to-cart');
   // Clone template
   // const template = document.getElementById("cartItem").content;
@@ -11486,66 +11093,22 @@ function ready() {
   //         document.querySelector('.cart-items').append(document.importNode(template, true));
   //     });
   // }
-
-
-  var plus = document.querySelectorAll('.plus');
-  var _iteratorNormalCompletion = true;
-  var _didIteratorError = false;
-  var _iteratorError = undefined;
-
-  try {
-    for (var _iterator = plus[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-      var element = _step.value;
-      element.addEventListener('click', function (e) {
-        var val = parseInt(e.target.previousElementSibling.getAttribute('value'));
-        e.target.previousElementSibling.setAttribute('value', val + 1);
-      });
-    }
-  } catch (err) {
-    _didIteratorError = true;
-    _iteratorError = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion && _iterator.return != null) {
-        _iterator.return();
-      }
-    } finally {
-      if (_didIteratorError) {
-        throw _iteratorError;
-      }
-    }
-  }
-
-  var minus = document.querySelectorAll('.minus');
-  var _iteratorNormalCompletion2 = true;
-  var _didIteratorError2 = false;
-  var _iteratorError2 = undefined;
-
-  try {
-    for (var _iterator2 = minus[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
-      var _element = _step2.value;
-
-      _element.addEventListener('click', function (e) {
-        var val = parseInt(e.target.nextElementSibling.getAttribute('value'));
-        e.target.nextElementSibling.setAttribute('value', val - 1);
-      });
-    }
-  } catch (err) {
-    _didIteratorError2 = true;
-    _iteratorError2 = err;
-  } finally {
-    try {
-      if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
-        _iterator2.return();
-      }
-    } finally {
-      if (_didIteratorError2) {
-        throw _iteratorError2;
-      }
-    }
-  }
+  // const plus = document.querySelectorAll('.plus');
+  // for (let element of plus) {
+  //     element.addEventListener('click', (e) => {
+  //         let val = parseInt(e.target.previousElementSibling.getAttribute('value'));
+  //         e.target.previousElementSibling.setAttribute('value', val + 1);
+  //     });
+  // }
+  // const minus = document.querySelectorAll('.minus');
+  // for (let element of minus) {
+  //     element.addEventListener('click', (e) => {
+  //         let val = parseInt(e.target.nextElementSibling.getAttribute('value'));
+  //         e.target.nextElementSibling.setAttribute('value', val - 1);
+  //     });
+  // }
 }
-},{"jquery":"../node_modules/jquery/dist/jquery.js","./data":"js/data.js","./lib":"js/lib.js"}],"../../../.nvm/versions/node/v11.0.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"jquery":"../node_modules/jquery/dist/jquery.js","./lib":"js/lib.js"}],"../../../.nvm/versions/node/v11.0.0/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -11572,7 +11135,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "45095" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "44001" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
